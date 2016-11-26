@@ -5,9 +5,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>main</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<!-- Latest compiled and minified CSS -->
+
+<style>
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+</style>
 </head>
-<body bgcolor="#FFFFCC">
+<body bgcolor="#FFFFCC" >
+	<p>초코부리볼의 미드 대 탐험 </p>
 	<img src ="images/123.png" border=1>
+	<jsp:include page="/homepage/sessionMemberLogIn.jsp"/>
 </body>
 </html>
