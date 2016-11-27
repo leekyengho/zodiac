@@ -18,7 +18,7 @@ import java.util.Vector;
  	 try{
  	   Class.forName(JDBC_DRIVER);
  	   }catch(Exception e){
- 	      System.out.println("Error : JDBC µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+ 	      System.out.println("Error : JDBC ÂµÃ¥Â¶Ã³Ã€ÃŒÂ¹Ã¶ Â·ÃÂµÃ¹ Â½Ã‡Ã†Ã");
  	   }
      }//MemberMgr()
  

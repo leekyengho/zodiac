@@ -17,7 +17,7 @@ public class RegisterMgrPool {
 		try{
 			pool = DBConnectionMgr.getInstance();
  	   	}catch(Exception e){
- 	   		System.out.println("Error : Ä¿³Ø¼Ç ¾ò¾î¿À±â ½ÇÆÐ");
+ 	   		System.out.println("Error : Ä¿ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
  	   	}
      }//MemberMgrPool()
  
@@ -81,7 +81,7 @@ public class RegisterMgrPool {
     		pool.freeConnection(con, pstmt);
     	}
     	return flag;
-    }//insertMember¸Þ¼Òµå   
+    }//insertMemberï¿½Þ¼Òµï¿½   
     
     public boolean deleteMember(String id)
     {
@@ -192,7 +192,7 @@ public class RegisterMgrPool {
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "seclect id from tblMember where id=?";
+			sql = "select id from tblMember where id= ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			flag = pstmt.executeQuery().next();
