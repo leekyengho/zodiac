@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>copy</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<title>Insert title here</title>
 </head>
-<body leftmargin="0" topmargin="0" bgcolor="#D9e5ff">
-
+<body>
+	<div border=1>
+		로그인영역
+	</div>
 </body>
 </html>

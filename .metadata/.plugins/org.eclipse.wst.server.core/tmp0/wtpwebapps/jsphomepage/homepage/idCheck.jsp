@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+
+<!DOCTYPE>
 <html>
 <head>
 <jsp:useBean id="mMgr" class="ch10.RegisterMgrPool"/>
 <%
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	boolean result = mMgr.checkId(id);
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ID Áßº¹Ã¼Å©</title>
+<meta charset ="UTF-8">
+<title>ID ì¤‘ë³µì²´í¬</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -18,12 +18,12 @@
 		<br/><b><%=id%></b>
 		<%
 			if(result) {
-				out.println("´Â ÀÌ¹Ì Á¸ÀçÇÏ´Â IDÀÔ´Ï´Ù.<p>");
+				out.println("ëŠ” ì´ë¯¸ ì¡´ì¬í•˜ëŠ” IDì…ë‹ˆë‹¤.<p>");
 			} else {
-				out.println("´Â »ç¿ë°¡´ÉÇÑ IDÀÔ´Ï´Ù.<p>");
+				out.println("ëŠ” ì‚¬ìš©ê°€ëŠ¥í•œ IDì…ë‹ˆë‹¤.<p>");
 			}
 		%>
-		<a href="#" onClick="self.close()">´İ±â</a>
+		<a href="#" onClick="self.close()">ë‹«ê¸°</a>
 	</div>
 </body>
 </html>

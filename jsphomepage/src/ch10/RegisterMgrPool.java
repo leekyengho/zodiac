@@ -192,7 +192,7 @@ public class RegisterMgrPool {
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "select id from tblMember where id= ? ";
+			sql = "select id from tblRegister where id= ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			flag = pstmt.executeQuery().next();

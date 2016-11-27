@@ -12,7 +12,7 @@ import java.util.Vector;
  	private final String JDBC_DRIVER = "org.gjt.mm.mysql.Driver";
  	private final String JDBC_URL = "jdbc:mysql://localhost:3306/mydb";
  	private final String USER = "root";
- 	private final String PASS = "1111";
+ 	private final String PASS = "seoil";
  
  	public RegisterMgr() {
  	 try{

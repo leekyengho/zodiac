@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%
 	String memberId = (String)session.getAttribute("memID");
 
@@ -6,16 +6,11 @@
 %>
 
   <script>
-   alert("·Î±×ÀÎ µÇ¾ú½À´Ï´Ù");
+   alert("ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤");
    location.href = "sessionLogInConfirm.jsp";
   </script>
 <% } %>
-<html>
-<head>
-<title>Simple LogIn</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-</head>
-<body  topmargin="100">
 <form method="post" action="sessionMemberLogInOK.jsp">
 <table width="75%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor=#D9e5ff>
   <tr bordercolor="#FFFF99"> 
@@ -39,14 +34,12 @@
           </tr>
           <tr> 
             <td colspan="2"><div align="center"> 
-                <input type="submit" value="·Î±×ÀÎ">
+                <input type="submit" value="ë¡œê·¸ì¸">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                <input type="reset" value="¸®¼Â">
+                <input type="reset" value="ë¦¬ì…‹">
               </div></td>
           </tr>
         </table>
       </form></td>
   </tr>
 </table>
-</body>
-</html>

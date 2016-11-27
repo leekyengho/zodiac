@@ -1,16 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.util.*, ch10.*"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°Ë»ö°á°ú</title>
-</head>
-<body>
 <div align = "center">
-<h1> °Ë»ö°á°ú </h1>
-<%-- ÄÃ·³Ãâ·Â --%>
+<h1> ê²€ìƒ‰ê²°ê³¼ </h1>
+<%-- ì»¬ëŸ¼ì¶œë ¥ --%>
 <table border = "1">
 <tr>
    <td><strong>ID</strong></td>
@@ -22,8 +12,8 @@
    <td><strong>PHONE</strong></td>
    <td><strong>ZIPCODE/ADDRESS</strong></td>
    <td><strong>JOB</strong></td>	
-   <td><strong>¼öÁ¤</strong></td>
-   <td><strong>»èÁ¦</strong></td>
+   <td><strong>ìˆ˜ì •</strong></td>
+   <td><strong>ì‚­ì œ</strong></td>
 </tr>
 
 <jsp:useBean id = "regMgr" class = "ch10.RegisterMgrPool" scope = "page" />
@@ -49,9 +39,9 @@
 		<td><%=regBean.getPhone()%></td>
 		<td><%=regBean.getZipcode()%>/<%=regBean.getAddress()%></td>
 		<td><%=regBean.getJob()%></td>
-		<td><a href = "modifyMember.jsp?id=<%=regBean.getId() %>">¼öÁ¤</a></td>
+		<td><a href = "modifyMember.jsp?id=<%=regBean.getId() %>">ìˆ˜ì •</a></td>
 		<td><a href = "deleteMember.jsp?id=<%=regBean.getId() %>"
-			   onclick = "return confirm('Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?');">»èÁ¦</a></td>
+			   onclick = "return confirm('ì •ë§ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?');">ì‚­ì œ</a></td>
  </tr>
    </table>
 		<br/><br/>
@@ -61,10 +51,8 @@
  total records : <%= counter %>
 
 <form method = "post" action = "searchMember.jsp">
-ÀÌ¸§ °Ë»ö  : <input type = "text" name = "searchName"> <input type = "submit" value = "°Ë»ö">
+ì´ë¦„ ê²€ìƒ‰  : <input type = "text" name = "searchName"> <input type = "submit" value = "ê²€ìƒ‰">
 </form>
 
 
 </div>
-</body>
-</html>
