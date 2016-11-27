@@ -32,3 +32,9 @@ body{margin:0}
 foot, .push {
    height: 155px;
 }
+.loginbox{
+	border:1px solid #e0e0e0;
+	background-color:ffffff;
+	height:50px;
+	padding-top:7px;
+}

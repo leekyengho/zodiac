@@ -27,6 +27,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <center>
 	<div class="wrapper">
 		<jsp:include page="/homepage/head.jsp" />
+		<jsp:include page="/homepage/login.jsp"/>
 		<jsp:include page='<%=pagefile+".jsp" %>'/>
 	</div>
 	<div class="push"></div>
