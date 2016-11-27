@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Velmont Repos/Study/University/2014년/1학기/소프트웨어프로젝트/java-lect-note/book/lib/mysqljdbc.jar"/>
+	
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
