@@ -21,6 +21,6 @@
 <%	}else{ %>
 	<script>
 	  alert("로그인 되지 않았습니다.");
-      location.href="sessionMemberLogIn.jsp";
+	  location.href="sessionMemberLogIn.jsp";
 	</script>
 <%	}	%>

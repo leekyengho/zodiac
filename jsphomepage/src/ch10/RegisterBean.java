@@ -5,7 +5,7 @@ public class RegisterBean{
 	private String id;
 	private String passwd;
 	private String name;
-	private String num1;
+	private String gender;
 	private String num2;
 	private String email;
 	private String phone;
@@ -31,11 +31,11 @@ public class RegisterBean{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getNum1() {
-		return num1;
+	public String getGender() {
+		return gender;
 	}
-	public void setNum1(String num1) {
-		this.num1 = num1;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public String getNum2() {
 		return num2;

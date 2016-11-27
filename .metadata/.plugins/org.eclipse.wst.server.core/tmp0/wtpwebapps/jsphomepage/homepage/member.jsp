@@ -9,11 +9,32 @@
 <body>
 <div align=center>
 <h1>회원 가입</h1>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
+	function idCheck(id) {
+		frm = document.regFrm;
+		if(id=="") {
+			alert("아이디를 입력하세요.");
+			frm.id.focus();
+			return;
+		}
+		url = "idCheck.jsp?id=" + id;
+		window.open(url, "IDCheck", "width=300, heigth=150");
+	}
+	
+	function zipCheck() {
+		url = "zipCheck.jsp?check=y";
+		window.open(url, "ZipCodeSearch", "width=500, height=300, scrollbars=yes");
+	}
+</script>
 	<form name=memberFrm  method="post" action="memberProc.jsp">
 		<table border=1 cellpadding=7 cellspacing=0 >
 			<tr>
-				<td bgcolor=lightyellow>아이디 </td> 
-    			<td align=left><input type="text" name="id"  maxlength=20></td>
+				<td bgcolor=lightyellow>아이디 </td>
+    			<td align=left><input type="text" name="id"  maxlength=20>
+    			<input type="button" value="ID중복확인" onClick="idCheck(this.form.id.value)">
+    			</td>
     		</tr>
 			<tr>
 				<td bgcolor=lightyellow>패스워드 </td> 
@@ -28,8 +49,10 @@
     			<td align=left><input type="text" name="name"  maxlength=20/></td>
     		</tr>
 			<tr>
-				<td bgcolor=lightyellow>num1</td>
-   				<td align=left><input type="text" name="num1"  maxlength=7></td>
+				<td bgcolor=lightyellow>성별</td>
+   				<td align=left><input type="radio" name="gender" value="남자" checked>남자
+   				<input type="radio" name="gender" value="여자">여자
+   				</td>
    			</tr>
 			<tr>
 				<td bgcolor=lightyellow>num2 </td>

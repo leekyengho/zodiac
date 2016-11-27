@@ -8,6 +8,6 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body leftmargin="0" topmargin="0" bgcolor="#D9e5ff">
-<jsp:include page="/homepage/sessionMemberLogIn.jsp"/>
+
 </body>
 </html>

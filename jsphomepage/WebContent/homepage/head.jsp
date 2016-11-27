@@ -32,35 +32,30 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <body>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
-		<div class="navbar-header">
-			<a href="<%=cPath%>/homepage/index.jsp" target="_parent" onFocus="this.blur();"><img src="images/Pidgeotto.png" width="50"/></a>
-		</div>
-		<div class="collapse navbar-collapse" id="chrto-navbar-collapse-1">
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="#">메인 화면</a>
+				<li>
+					<a href="index.jsp">홈</a>
 				</li>
 				<li>
 					<a href="<%=url%>" target="content">회원가입</a>
 				</li>
 				<li>
-					<a href="#">조류 연구</a>
+					<a href="#">공지사항</a>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-haspopup="true" aria-expanded="false" >미드 연구<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-haspopup="true" aria-expanded="false" >미드 게시판<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">NCIS</a></li>
 						<li><a href="#">왕좌의게임</a></li>
 						<li><a href="#">워킹 데드</a></li>
 					</ul>
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-haspopup="true" aria-expanded="false" >게시판<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">자유 게시판</a></li>
-						<li><a href="#">촉새 게시판</a></li>
-						<li><a href="#">벨몽 연구소</a></li>
-					</ul>
+				<li>
+					<a href="#">자유게시판</a>
+				</li>
+				<li>
+					<a href="#">방명록</a>
 				</li>
 			</ul>
 		</div>

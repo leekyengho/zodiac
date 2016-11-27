@@ -24,7 +24,7 @@
         </tr>
         <tr >         
           <td><div align="center"> 
-           <strong><%= memberId %></strong>
+           <strong><%=memberId%></strong>
 			님이 로그인 하셨습니다. 
             </div></td>
           <td><div align="center"> 

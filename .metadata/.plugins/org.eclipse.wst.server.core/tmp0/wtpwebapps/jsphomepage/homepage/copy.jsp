@@ -11,7 +11,7 @@
 	<table width="1280" height="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EEEEEE">
 		<tr>
 			<td valign="top" align="center">
-				Copyright ? <font color="blue"><b>JSP HOME</b></font> All Rights Reserved.
+				Copyright <font color="blue"><b>JSP HOME</b></font> All Rights Reserved.
 			</td>
 		</tr>
 	</table>

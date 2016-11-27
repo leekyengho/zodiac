@@ -11,6 +11,7 @@ public class RegisterMgrPool {
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	private String sql = null;
 	
 	public RegisterMgrPool() {
 		try{
@@ -34,7 +35,7 @@ public class RegisterMgrPool {
 			 bean.setId (rs.getString("id"));
 			 bean.setPasswd (rs.getString("passwd"));
 			 bean.setName (rs.getString("name"));
-			 bean.setNum1 (rs.getString("num1"));
+			 bean.setGender (rs.getString("gender"));
 			 bean.setNum2 (rs.getString("num2"));
 			 bean.setEmail (rs.getString("email"));
 			 bean.setPhone (rs.getString("phone"));
@@ -56,7 +57,7 @@ public class RegisterMgrPool {
     	boolean flag = false;
     	try{
     		con = pool.getConnection();
-    		sql = "insert tblRegister(id,passwd,name,num1,num2,email,"
+    		sql = "insert tblRegister(id,passwd,name,gender,num2,email,"
     				+ " phone, zipcode, address, job)"
     				+ " values(?,?,?,?,?,?,?,?,?,?)";
     		
@@ -64,7 +65,7 @@ public class RegisterMgrPool {
     		pstmt.setString(1, bean.getId());
     		pstmt.setString(2, bean.getPasswd());
     		pstmt.setString(3, bean.getName());
-    		pstmt.setString(4, bean.getNum1());
+    		pstmt.setString(4, bean.getGender());
     		pstmt.setString(5, bean.getNum2());
     		pstmt.setString(6, bean.getEmail());
     		pstmt.setString(7, bean.getPhone());
@@ -107,13 +108,13 @@ public class RegisterMgrPool {
     	boolean flag = false;
     	try{
     		con = pool.getConnection();
-    		sql = "update tblRegister set passwd =?,name =?,num1=?,num2=?,email=?,"
+    		sql = "update tblRegister set passwd =?,name =?,gender=?,num2=?,email=?,"
     				+ " phone=?, zipcode=?, address=?, job=? where id = ?";
     		pstmt = con.prepareStatement(sql);
     		pstmt.setString(10, id);
     		pstmt.setString(1, bean.getPasswd());
     		pstmt.setString(2, bean.getName());
-    		pstmt.setString(3, bean.getNum1());
+    		pstmt.setString(3, bean.getGender());
     		pstmt.setString(4, bean.getNum2());
     		pstmt.setString(5, bean.getEmail());
     		pstmt.setString(6, bean.getPhone());
@@ -150,7 +151,7 @@ public class RegisterMgrPool {
  			 bean.setId (rs.getString("id"));
  			 bean.setPasswd (rs.getString("passwd"));
  			 bean.setName (rs.getString("name"));
- 			 bean.setNum1 (rs.getString("num1"));
+ 			 bean.setGender (rs.getString("gender"));
  			 bean.setNum2 (rs.getString("num2"));
  			 bean.setEmail (rs.getString("email"));
  			 bean.setPhone (rs.getString("phone"));
@@ -175,8 +176,8 @@ public class RegisterMgrPool {
    		String query = "select count(*) from tblRegister where id = ? and passwd = ?";
            	pstmt = con.prepareStatement(query);
        		pstmt.setString(1,cust_id);
-        		pstmt.setString(2,cust_passwd);
-        		rs = pstmt.executeQuery();
+        	pstmt.setString(2,cust_passwd);
+        	rs = pstmt.executeQuery();
 		rs.next();
         		if(rs.getInt(1)>0) flag=true;
    		}catch(Exception e) {
@@ -186,5 +187,20 @@ public class RegisterMgrPool {
         }
     	return flag;
 }
-
+	public boolean checkId(String id) {
+		
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "seclect id from tblMember where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			flag = pstmt.executeQuery().next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return flag;
+	}
  }//class

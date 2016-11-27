@@ -17,32 +17,49 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>head</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<table width="1280" border="0" cellpadding="0" cellspacing="0">
-		<tr>
-			<td colspan="5">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
-		<tr>
-			<td height="50">
-	<a href="<%=cPath%>/homepage/index.jsp" target="_parent" onFocus="this.blur();">
-	<img src ="images/ho.png" border=0></a>
-			</td>
-		</tr>
-	</table>
-			</td>
-		</tr>
-		<tr height = "20">
-			<td colspan="2">&nbsp;</td>
-		</tr>
-		<tr>
-			<td width="250">&nbsp;</td>
-			<td><font size="3"><a href="<%=url%>" target="content"><b><%=label%></b></a></font></td>
-			<td><font size="3"><b>게시판</b></font></td>
-			<td><font size="3"><b>게시판2</b></font></td>
-			<td>게시판3</td>
-		</tr>
-	</table>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="index.jsp">홈</a>
+				</li>
+				<li>
+					<a href="<%=url%>" target="content">회원가입</a>
+				</li>
+				<li>
+					<a href="#">공지사항</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-haspopup="true" aria-expanded="false" >미드 게시판<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">NCIS</a></li>
+						<li><a href="#">왕좌의게임</a></li>
+						<li><a href="#">워킹 데드</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">자유게시판</a>
+				</li>
+				<li>
+					<a href="#">방명록</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
 </body>
 </html>

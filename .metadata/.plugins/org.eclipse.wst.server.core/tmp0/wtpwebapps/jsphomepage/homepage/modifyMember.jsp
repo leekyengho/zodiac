@@ -73,8 +73,10 @@
    			<td align=left><input type="text" name="name"  maxlength=20 value = <%=regBean.getName() %> id = "name"></td>
    		</tr>
 		<tr>
-			<td bgcolor=lightyellow>num1</td>
-    		<td align=left><input type="text" name="num1"  maxlength=7 value = <%=regBean.getNum1() %>></td>
+			<td bgcolor=lightyellow>성별</td>
+    		<td align=left><input type="radio" name="gender" value = "남자" checked>남자
+    		<input type="radio" name="gender" value = "여자">여자
+    		</td>
     	</tr>
 		<tr>
 			<td bgcolor=lightyellow>num2 </td>

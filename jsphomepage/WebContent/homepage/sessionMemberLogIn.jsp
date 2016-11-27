@@ -39,9 +39,9 @@
           </tr>
           <tr> 
             <td colspan="2"><div align="center"> 
-                <input type="submit" value="login">
+                <input type="submit" value="로그인">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                <input type="reset" value="reset">
+                <input type="reset" value="리셋">
               </div></td>
           </tr>
         </table>

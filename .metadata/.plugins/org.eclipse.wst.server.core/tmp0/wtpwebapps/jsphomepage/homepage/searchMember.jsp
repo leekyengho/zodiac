@@ -16,7 +16,7 @@
    <td><strong>ID</strong></td>
    <td><strong>PASSWD</strong>
    <td><strong>NAME</strong></td>
-   <td><strong>NUM1</strong></td>
+   <td><strong>GENDER</strong></td>
    <td><strong>NUM2</strong></td>
    <td><strong>EMAIL</strong></td>
    <td><strong>PHONE</strong></td>
@@ -43,7 +43,7 @@
 		<td><%=regBean.getId()%></td>
 		<td><%=regBean.getPasswd() %></td>
 		<td><%=regBean.getName()%></td>
-		<td><%=regBean.getNum1()%></td>
+		<td><%=regBean.getGender()%></td>
 		<td><%=regBean.getNum2()%></td>
 		<td><%=regBean.getEmail()%></td>
 		<td><%=regBean.getPhone()%></td>

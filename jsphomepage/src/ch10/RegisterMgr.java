@@ -37,7 +37,7 @@ import java.util.Vector;
 		 	 regBean.setId (rs.getString("id"));
 			 regBean.setPasswd (rs.getString("passwd"));
  			 regBean.setName (rs.getString("name"));
- 			 regBean.setNum1 (rs.getString("num1"));
+ 			 regBean.setGender (rs.getString("gender"));
  			 regBean.setNum2 (rs.getString("num2"));
  			 regBean.setEmail (rs.getString("email"));
  			 regBean.setPhone (rs.getString("phone"));
