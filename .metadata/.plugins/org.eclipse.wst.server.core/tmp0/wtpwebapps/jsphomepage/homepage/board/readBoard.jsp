@@ -84,10 +84,10 @@ function deleteConfirm(num) {
 	    </tr>
 		<tr>
 	     <td colspan=4>
-	  		<input type=button value="수정" onClick="location.href='editBoard.jsp?num=<%=num %>'">
+	  		<input type=button value="수정" onClick="location.href='template.jsp?page=/board/editBoard&num=<%=num %>'">
 	    	<input type=button value="삭제" onClick="deleteConfirm(<%=num%>)"> 
 			<!-- 목록보기 버튼은 listboard.jsp로 이동 -->
-			<input type=button value="목록보기" onClick="location.href='listBoard.jsp'">
+			<input type=button value="목록보기" onClick="location.href='template.jsp?page=/board/listBoard'">
 		 </td>
 	    </tr> 
    	</table>  	

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>패스워드 입력  </h2> <hr> <br><br>
-<form method=post action=deleteBoard.jsp>
+<form method=post action=template.jsp?page=/board/deleteBoard.jsp>
 <input type=hidden name="num" value=<%=request.getParameter("num") %>>
 <div align=center>
 <table width=300 cellspacing=10 cellpadding=5>

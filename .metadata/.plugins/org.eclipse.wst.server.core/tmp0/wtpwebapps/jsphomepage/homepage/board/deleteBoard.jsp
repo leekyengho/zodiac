@@ -25,7 +25,7 @@
 <%
 	}else{
 		brddb.deleteBoard(inum);
-		response.sendRedirect("listBoard.jsp");
+		response.sendRedirect("template.jsp?page=/board/listBoard");
 	}
 %>
 

@@ -35,7 +35,7 @@
 <h2>게시판 <%=headline %>  </h2> <hr>
 
 <center>
-<form name=boardForm method=post action="processBoard.jsp" >
+<form name=boardForm method=post action="template.jsp?page=/board/processBoard" >
 <!-- 수정:  게시 id를 hidden으로 전송 -->
 <input type=hidden name="num" value=<%=num %>>
 <input type=hidden name="menu" value="insert">
@@ -82,7 +82,7 @@
 		  				<input type=button value="수정완료" onClick="updateCheck()">			    	
 				<% } %>
 						
-				<input type=button value="목록보기" onClick="location.href='listBoard.jsp'"> 				
+				<input type=button value="목록보기" onClick="location.href='template.jsp?page=/board/listBoard'"> 				
 			 </td>
 	    </tr> 
    	</table> 

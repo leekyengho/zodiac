@@ -42,7 +42,7 @@
     	onmouseout="this.style.backgroundColor='<%=color %>'">
 		<!-- 수정과 삭제를 위한 링크로 id를 전송 -->
        <td align=center><%= brd.getNum()%></td>
-       <td align=left><a href="template.jsp?page=/board/readBoard?num=<%= brd.getNum()%>"><%= brd.getTitle() %></a></td>
+       <td align=left><a href="template.jsp?page=/board/readBoard&num=<%= brd.getNum()%>"><%= brd.getTitle() %></a></td>
        <td align=center><%= brd.getName() %></td>
 		<!-- 게시 작성일을 2010-3-15 10:33:21 형태로 출력 -->
        <td align=center><%= df.format(brd.getRegdate()) %></td>
@@ -58,7 +58,7 @@
 <hr width=80%>
 <p>조회된 게시판 목록 수가 <%=counter%>개 입니다.
 <br><br>
-<form name=form method=post action=/board/editBoard.jsp>
+<form name=form method=post action=template.jsp?page=/board/editBoard>
       <input type=submit value="글쓰기"> 
 </form>
 </center>

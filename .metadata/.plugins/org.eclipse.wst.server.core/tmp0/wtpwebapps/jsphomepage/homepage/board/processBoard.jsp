@@ -36,7 +36,7 @@
 
 	<%					
 					brddb.updateBoard(brd);				
-					response.sendRedirect("listBoard.jsp");					 		
+					response.sendRedirect("template.jsp?page=/board/listBoard");					 		
 			}
 	 	} else if ( menu.equals("insert") ) {  
 	%>
@@ -49,7 +49,7 @@
 
 	<%				
 			brddb.insertBoard(brd);
-			response.sendRedirect("listBoard.jsp");					 		
+			response.sendRedirect("template.jsp?page=/board/listBoard");					 		
 	 	}
 	%>
 </body>
