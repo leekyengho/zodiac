@@ -27,10 +27,9 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <center>
 	<div class="wrapper">
 		<jsp:include page="/homepage/head.jsp" />
+	<div id="content">
 		<jsp:include page='<%=pagefile+".jsp" %>'/>
 	</div>
-	<div class="push"></div>
-	<div id="foot">
 		<jsp:include page="/homepage/foot.jsp" />
 	</div>
 </center>

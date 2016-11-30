@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+	String id = (String) session.getAttribute("idKey");
+	session.setAttribute("id", id);    
+%>
+<%	
+		if(id!="master"){ 
+%>
+ <script>
+ 	alert("권한이 없습니다..");
+ </script>
+<%
+ }
+%> 

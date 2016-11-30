@@ -4,6 +4,7 @@
 	String cPath = request.getContextPath();
 	String url = "member.jsp";
 	String label = "회원가입";
+	String board = "/board/listBoard.jsp";
 	
 		if(id!=null) {
 			url = "modifyMember.jsp";
@@ -18,9 +19,6 @@
 					<a href="index.jsp">홈</a>
 				</li>
 				<li>
-					<a href="template.jsp?page=member">회원가입</a>
-				</li>
-				<li>
 					<a href="#">공지사항</a>
 				</li>
 				<li class="dropdown">
@@ -32,7 +30,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#">자유게시판</a>
+					<a href="template.jsp?page=/board/listBoard">자유게시판</a>
 				</li>
 				<li>
 					<a href="#">방명록</a>

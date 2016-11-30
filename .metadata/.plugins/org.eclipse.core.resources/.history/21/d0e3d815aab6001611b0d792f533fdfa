@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+ if(session.getAttribute("id").equals("master")){ //로그인하지 않았을 경우
+%>
+ <script>
+ 	alert("관리자님 안녕하세요");
+ </script>
+<%
+ } else
+%> 
+<script>
+	alert("권한이 없습니다.");
+</script>

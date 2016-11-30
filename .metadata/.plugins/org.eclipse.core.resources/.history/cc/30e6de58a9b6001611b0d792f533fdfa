@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+ <%
+	request.setCharacterEncoding("euc-kr");
+	String id = (String) session.getAttribute("idKey");
+%>
+<%	
+	if(session.getAttribute("id") != null) {
+		if(id.equals("master"))
+%>
+<script>
+	alert("관리자 ㅎㅇ");
+</script>
+<%
+	}else
+%>
+<script>
+	alert("권한이 없습니다.");
+	location.href = "index.jsp";
+</script>

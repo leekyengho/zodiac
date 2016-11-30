@@ -1,0 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+	if(session.getAttribute("id").equals("master")){ 
+%>
+ <script>
+ 	alert("관리자님 안녕하세요");
+ </script>
+<%
+ }
+%> 

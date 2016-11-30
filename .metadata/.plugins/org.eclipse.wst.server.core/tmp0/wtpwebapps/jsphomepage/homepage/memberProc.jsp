@@ -22,14 +22,16 @@
 %>
 		<script>
 				alert("회원가입을 축하합니다.");
-				location.href = "memberList.jsp";
+				window.close();
+				location.href = "index.jsp";
 		</script>
 <%
 	}else{
 %>
 		<script>
 				alert("회원가입을 실패하였습니다.");
-				history.back();
+				window.close();
+				location.href = "index.jsp";
 		</script>
 <%
 		}

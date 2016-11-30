@@ -3,13 +3,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+	request.setCharacterEncoding("euc-kr");
+	String id = (String) session.getAttribute("idKey");
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	function loginCheck() {
+		if(document.loginFrm.id.value =="") {
+			alert("아이디를 입력해 주세요");
+			document.loginFrm.id.focus();
+			return;
+		}
+		if(document.loginFrm.pass.value=="") {
+			alert("비밀번호를 입력해주세요");
+			document.loginFrm.pass.focus();
+			return;
+		}
+		document.loginFrm.submit();
+	}
+</script>
 </head>
 <body>
-<link href="style.css" rel="stylesheet" type="text/css">
-	<div class="loginbox" style= width:1080px; heigth=50px; border=1px>
-		dd
-	</div>
+<br/><br/>
+<div align="center">
+<%
+	if(id!=null) {
+		if(id.equals("master")) {
+%>
+<b><%=id %></b>관리자님 안녕하세요
+<a href="sessionLogOut.jsp">로그아웃</a>
+<a href="memberList.jsp" target="_blank">회원관리</a>
+<%
+		}else{
+%>
+<b><%=id %></b>일반유저님 안녕하세요
+<a href="sessionLogOut.jsp">로그아웃</a>
+<a href="modifyMember.jsp?id=<%=id%>" target="_black">개인정보수정</a>
+<%
+}
+%>
+<%
+	}else{
+%>
+<form name="loginFrm" method="post" action="loginProc.jsp">
+<table>
+	<tr>
+		<td align="center" colspan="2"><h4>로그인</h4></td>
+	</tr>
+	<tr>
+		<td>아 이 디</td>
+		<td><input type="text" name="id" value=""></td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td><input type="password" name="pass" value=""></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div align="right">
+				<input type="button" value="로그인" onClick="loginCheck()">&nbsp;
+				<input type="button" value="회원가입" onClick="window.open('member.jsp')">
+			</div>
+		</td>
+	</tr>	
+</table>
+</form>
+<%} %>
+</div>
 </body>
 </html>

@@ -79,10 +79,6 @@
     		</td>
     	</tr>
 		<tr>
-			<td bgcolor=lightyellow>num2 </td>
-   			<td align=left><input type="text" name="num2"  maxlength=7 value = <%=regBean.getNum2()%>></td>
-   		</tr>
-		<tr>
 			<td bgcolor=lightyellow>¿Ã∏ﬁ¿œ </td>
    			<td align=left><input type="text" name="email" maxlength=30 size=40 value = <%=regBean.getEmail()%>></td>
    		</tr>

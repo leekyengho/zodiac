@@ -22,14 +22,16 @@
 %>
 		<script>
 				alert("수정완료.");
-				location.href = "memberList.jsp";
+				window.close();
+				location.href = "index.jsp";
 		</script>
 <%
 	}else{
 %>
 		<script>
 				alert("수정실패.");
-				history.back();
+				window.close();
+				location.href = "index.jsp";
 		</script>
 <%
 		}

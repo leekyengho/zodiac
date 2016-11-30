@@ -36,7 +36,6 @@ public class RegisterMgrPool {
 			 bean.setPasswd (rs.getString("passwd"));
 			 bean.setName (rs.getString("name"));
 			 bean.setGender (rs.getString("gender"));
-			 bean.setNum2 (rs.getString("num2"));
 			 bean.setEmail (rs.getString("email"));
 			 bean.setPhone (rs.getString("phone"));
 			 bean.setZipcode (rs.getString("zipcode"));
@@ -57,21 +56,20 @@ public class RegisterMgrPool {
     	boolean flag = false;
     	try{
     		con = pool.getConnection();
-    		sql = "insert tblRegister(id,passwd,name,gender,num2,email,"
+    		sql = "insert tblRegister(id,passwd,name,gender,email,"
     				+ " phone, zipcode, address, job)"
-    				+ " values(?,?,?,?,?,?,?,?,?,?)";
+    				+ " values(?,?,?,?,?,?,?,?,?)";
     		
     		pstmt = con.prepareStatement(sql);
     		pstmt.setString(1, bean.getId());
     		pstmt.setString(2, bean.getPasswd());
     		pstmt.setString(3, bean.getName());
     		pstmt.setString(4, bean.getGender());
-    		pstmt.setString(5, bean.getNum2());
-    		pstmt.setString(6, bean.getEmail());
-    		pstmt.setString(7, bean.getPhone());
-    		pstmt.setString(8, bean.getZipcode());
-    		pstmt.setString(9, bean.getAddress());
-    		pstmt.setString(10, bean.getJob());
+    		pstmt.setString(5, bean.getEmail());
+    		pstmt.setString(6, bean.getPhone());
+    		pstmt.setString(7, bean.getZipcode());
+    		pstmt.setString(8, bean.getAddress());
+    		pstmt.setString(9, bean.getJob());
     		
     		if(pstmt.executeUpdate() == 1)	flag = true;
     	}
@@ -108,19 +106,18 @@ public class RegisterMgrPool {
     	boolean flag = false;
     	try{
     		con = pool.getConnection();
-    		sql = "update tblRegister set passwd =?,name =?,gender=?,num2=?,email=?,"
+    		sql = "update tblRegister set passwd =?,name =?,gender=?,email=?,"
     				+ " phone=?, zipcode=?, address=?, job=? where id = ?";
     		pstmt = con.prepareStatement(sql);
-    		pstmt.setString(10, id);
+    		pstmt.setString(9, id);
     		pstmt.setString(1, bean.getPasswd());
     		pstmt.setString(2, bean.getName());
     		pstmt.setString(3, bean.getGender());
-    		pstmt.setString(4, bean.getNum2());
-    		pstmt.setString(5, bean.getEmail());
-    		pstmt.setString(6, bean.getPhone());
-    		pstmt.setString(7, bean.getZipcode());
-    		pstmt.setString(8, bean.getAddress());
-    		pstmt.setString(9, bean.getJob());
+    		pstmt.setString(4, bean.getEmail());
+    		pstmt.setString(5, bean.getPhone());
+    		pstmt.setString(6, bean.getZipcode());
+    		pstmt.setString(7, bean.getAddress());
+    		pstmt.setString(8, bean.getJob());
     		if(pstmt.executeUpdate()>0) flag = true;
     	}	catch(Exception e){
     		e.printStackTrace();
@@ -152,7 +149,6 @@ public class RegisterMgrPool {
  			 bean.setPasswd (rs.getString("passwd"));
  			 bean.setName (rs.getString("name"));
  			 bean.setGender (rs.getString("gender"));
- 			 bean.setNum2 (rs.getString("num2"));
  			 bean.setEmail (rs.getString("email"));
  			 bean.setPhone (rs.getString("phone"));
  			 bean.setZipcode (rs.getString("zipcode"));

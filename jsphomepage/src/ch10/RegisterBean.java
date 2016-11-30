@@ -6,7 +6,6 @@ public class RegisterBean{
 	private String passwd;
 	private String name;
 	private String gender;
-	private String num2;
 	private String email;
 	private String phone;
 	private String zipcode;
@@ -37,12 +36,7 @@ public class RegisterBean{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getNum2() {
-		return num2;
-	}
-	public void setNum2(String num2) {
-		this.num2 = num2;
-	}
+	
 	public String getEmail() {
 		return email;
 	}

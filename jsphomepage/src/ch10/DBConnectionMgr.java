@@ -38,7 +38,7 @@ public class DBConnectionMgr {
     private String _driver = "org.gjt.mm.mysql.Driver",
     _url = "jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=UTF-8",
     _user = "root",
-    _password = "seoil";
+    _password = "1111";
     private boolean _traceOn = false;
     private boolean initialized = false;
     private int _openConnections = 10;

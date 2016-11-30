@@ -1,0 +1,206 @@
+package ch10;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
+
+public class RegisterMgrPool {
+	
+	private DBConnectionMgr pool = null;
+	private Connection con = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+	private String sql = null;
+	
+	public RegisterMgrPool() {
+		try{
+			pool = DBConnectionMgr.getInstance();
+ 	   	}catch(Exception e){
+ 	   		System.out.println("Error : Ŀ�ؼ� ������ ����");
+ 	   	}
+     }//MemberMgrPool()
+ 
+    public Vector<RegisterBean> getMemberList() {   
+       String sql = null;
+	   Vector<RegisterBean> vecList = new Vector<RegisterBean>();	   
+	   
+       try {
+          con = pool.getConnection();
+          sql = "select * from tblRegister";
+          pstmt = con.prepareStatement(sql);
+          rs = pstmt.executeQuery();
+		  while (rs.next()) {
+			 RegisterBean bean = new RegisterBean();
+			 bean.setId (rs.getString("id"));
+			 bean.setPasswd (rs.getString("passwd"));
+			 bean.setName (rs.getString("name"));
+			 bean.setGender (rs.getString("gender"));
+			 bean.setNum2 (rs.getString("num2"));
+			 bean.setEmail (rs.getString("email"));
+			 bean.setPhone (rs.getString("phone"));
+			 bean.setZipcode (rs.getString("zipcode"));
+			 bean.setAddress (rs.getString("address"));
+			 bean.setJob (rs.getString("job"));
+             vecList.add(bean);
+          }
+       } catch (Exception ex) {
+          System.out.println("Exception" + ex);
+       } finally {
+	      pool.freeConnection(con, pstmt, rs);
+       }
+       return vecList;
+    }
+    
+    public boolean insertMember(RegisterBean bean){
+    	String sql = null;
+    	boolean flag = false;
+    	try{
+    		con = pool.getConnection();
+    		sql = "insert tblRegister(id,passwd,name,gender,num2,email,"
+    				+ " phone, zipcode, address, job)"
+    				+ " values(?,?,?,?,?,?,?,?,?,?)";
+    		
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(1, bean.getId());
+    		pstmt.setString(2, bean.getPasswd());
+    		pstmt.setString(3, bean.getName());
+    		pstmt.setString(4, bean.getGender());
+    		pstmt.setString(5, bean.getNum2());
+    		pstmt.setString(6, bean.getEmail());
+    		pstmt.setString(7, bean.getPhone());
+    		pstmt.setString(8, bean.getZipcode());
+    		pstmt.setString(9, bean.getAddress());
+    		pstmt.setString(10, bean.getJob());
+    		
+    		if(pstmt.executeUpdate() == 1)	flag = true;
+    	}
+    	catch(Exception e){
+    		e.printStackTrace();
+    	}finally{
+    		pool.freeConnection(con, pstmt);
+    	}
+    	return flag;
+    }//insertMember�޼ҵ�   
+    
+    public boolean deleteMember(String id)
+    {
+    	String sql = null;
+    	boolean flag = false;
+    	try{
+    		con = pool.getConnection();
+    		sql = "delete from tblRegister where id = ?";
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(1,  id);
+    		
+    		if(pstmt.executeUpdate() > 0)	flag = true;
+    	}	catch(Exception e){
+    		e.printStackTrace();
+    	}finally{
+    		pool.freeConnection(con, pstmt);
+    	}
+    	
+    	return flag;
+    }
+    
+    public boolean modifyMember(RegisterBean bean, String id) {
+    	String sql = null;
+    	boolean flag = false;
+    	try{
+    		con = pool.getConnection();
+    		sql = "update tblRegister set passwd =?,name =?,gender=?,num2=?,email=?,"
+    				+ " phone=?, zipcode=?, address=?, job=? where id = ?";
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(10, id);
+    		pstmt.setString(1, bean.getPasswd());
+    		pstmt.setString(2, bean.getName());
+    		pstmt.setString(3, bean.getGender());
+    		pstmt.setString(4, bean.getNum2());
+    		pstmt.setString(5, bean.getEmail());
+    		pstmt.setString(6, bean.getPhone());
+    		pstmt.setString(7, bean.getZipcode());
+    		pstmt.setString(8, bean.getAddress());
+    		pstmt.setString(9, bean.getJob());
+    		if(pstmt.executeUpdate()>0) flag = true;
+    	}	catch(Exception e){
+    		e.printStackTrace();
+    	}finally{
+    		pool.freeConnection(con, pstmt);
+    	}
+    	return flag;
+    	
+    }
+    
+    public Vector<RegisterBean> getSearchMemberList(String name) {   
+        String sql = null;
+        
+       
+ 	   Vector<RegisterBean> vecList = new Vector<RegisterBean>();	   
+ 	  
+        try {
+        	
+           con = pool.getConnection();
+           sql = "select * from tblRegister where name ='"+name+"';"; 
+           pstmt = con.prepareStatement(sql);
+           rs = pstmt.executeQuery();
+           
+           
+ 		  while (rs.next()) {
+ 			 RegisterBean bean = new RegisterBean();
+ 			 bean = new RegisterBean();
+ 			 bean.setId (rs.getString("id"));
+ 			 bean.setPasswd (rs.getString("passwd"));
+ 			 bean.setName (rs.getString("name"));
+ 			 bean.setGender (rs.getString("gender"));
+ 			 bean.setNum2 (rs.getString("num2"));
+ 			 bean.setEmail (rs.getString("email"));
+ 			 bean.setPhone (rs.getString("phone"));
+ 			 bean.setZipcode (rs.getString("zipcode"));
+ 			 bean.setAddress (rs.getString("address"));
+ 			 bean.setJob (rs.getString("job"));
+             vecList.add(bean);
+           }
+        } catch (Exception ex) {
+           System.out.println("Exception" + ex);
+        } finally {
+ 	      pool.freeConnection(con, pstmt, rs);
+        }
+        return vecList;
+     }
+    
+	public boolean passCheck(String cust_id, String cust_passwd){
+		 
+    	boolean flag = false;
+    	try {
+      		con = pool.getConnection();
+   		String query = "select count(*) from tblRegister where id = ? and passwd = ?";
+           	pstmt = con.prepareStatement(query);
+       		pstmt.setString(1,cust_id);
+        	pstmt.setString(2,cust_passwd);
+        	rs = pstmt.executeQuery();
+		rs.next();
+        		if(rs.getInt(1)>0) flag=true;
+   		}catch(Exception e) {
+    		e.printStackTrace();
+        }finally{
+		pool.freeConnection(con,pstmt,rs);
+        }
+    	return flag;
+}
+	public boolean checkId(String id) {
+		
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "select id from tblRegister where id= ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			flag = pstmt.executeQuery().next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return flag;
+	}
+ }//class

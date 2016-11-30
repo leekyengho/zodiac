@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=euc-kr"%>
 <%@ page import="java.util.*, ch10.*"%>
+<jsp:include page="common2.jsp"/>
 <html>
 <head>
 <title>회원목록</title>
@@ -15,13 +16,11 @@
 
 <table bordercolor="#0000ff" border="1">
 
-<%--컬럼 이름--%>
+
 <tr>
   <td><strong>ID</strong></td>
-   
   <td><strong>NAME</strong></td>
   <td><strong>GENDER</strong></td>
-  <td><strong>NUM2</strong></td>
   <td><strong>EMAIL</strong></td>
   <td><strong>PHONE</strong></td>
   <td><strong>ZIPCODE/ADDRESS</strong></td>
@@ -46,7 +45,6 @@
 <td><%=regBean.getId()%></td>
 <td><%=regBean.getName()%></td>
 <td><%=regBean.getGender()%></td>
-<td><%=regBean.getNum2()%></td>
 <td><%=regBean.getEmail()%></td>
 <td><%=regBean.getPhone()%></td>
 <td><%=regBean.getZipcode()%>/<%=regBean.getAddress()%></td>

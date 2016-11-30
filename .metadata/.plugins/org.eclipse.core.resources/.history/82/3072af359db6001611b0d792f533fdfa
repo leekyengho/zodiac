@@ -1,0 +1,56 @@
+<div align = "center">
+<h1> ê²ìê²°ê³¼ </h1>
+
+<table border = "1">
+<tr>
+   <td><strong>ID</strong></td>
+   <td><strong>PASSWD</strong>
+   <td><strong>NAME</strong></td>
+   <td><strong>GENDER</strong></td>
+   <td><strong>EMAIL</strong></td>
+   <td><strong>PHONE</strong></td>
+   <td><strong>ZIPCODE/ADDRESS</strong></td>
+   <td><strong>JOB</strong></td>	
+   <td><strong>수정</strong></td>
+   <td><strong>삭제</strong></td>
+</tr>
+
+<jsp:useBean id = "regMgr" class = "ch10.RegisterMgrPool" scope = "page" />
+
+<%
+	request.setCharacterEncoding("euc-kr");
+	Vector<RegisterBean> vlist = regMgr.getSearchMemberList(request.getParameter("searchName"));
+	
+	int counter = vlist.size();System.out.println(counter);
+	System.out.println(request.getParameter("searchName"));
+%>
+	<tr>
+<%
+	for(int i=0; i<vlist.size(); i++){
+  		RegisterBean regBean = (RegisterBean)vlist.get(i);
+ %>	
+		<td><%=regBean.getId()%></td>
+		<td><%=regBean.getPasswd() %></td>
+		<td><%=regBean.getName()%></td>
+		<td><%=regBean.getGender()%></td>
+		<td><%=regBean.getEmail()%></td>
+		<td><%=regBean.getPhone()%></td>
+		<td><%=regBean.getZipcode()%>/<%=regBean.getAddress()%></td>
+		<td><%=regBean.getJob()%></td>
+		<td><a href = "modifyMember.jsp?id=<%=regBean.getId() %>">ìì </a></td>
+		<td><a href = "deleteMember.jsp?id=<%=regBean.getId() %>"
+			   onclick = "return confirm('ì ë§ ì­ì íìê² ìµëê¹?');">ì­ì </a></td>
+ </tr>
+   </table>
+		<br/><br/>
+ <%
+	}
+ %>
+ total records : <%= counter %>
+
+<form method = "post" action = "searchMember.jsp">
+ì´ë¦ ê²ì  : <input type = "text" name = "searchName"> <input type = "submit" value = "ê²ì">
+</form>
+
+
+</div>

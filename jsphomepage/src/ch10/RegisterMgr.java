@@ -12,7 +12,7 @@ import java.util.Vector;
  	private final String JDBC_DRIVER = "org.gjt.mm.mysql.Driver";
  	private final String JDBC_URL = "jdbc:mysql://localhost:3306/mydb";
  	private final String USER = "root";
- 	private final String PASS = "seoil";
+ 	private final String PASS = "1111";
  
  	public RegisterMgr() {
  	 try{
@@ -38,7 +38,6 @@ import java.util.Vector;
 			 regBean.setPasswd (rs.getString("passwd"));
  			 regBean.setName (rs.getString("name"));
  			 regBean.setGender (rs.getString("gender"));
- 			 regBean.setNum2 (rs.getString("num2"));
  			 regBean.setEmail (rs.getString("email"));
  			 regBean.setPhone (rs.getString("phone"));
  			 regBean.setZipcode (rs.getString("zipcode"));

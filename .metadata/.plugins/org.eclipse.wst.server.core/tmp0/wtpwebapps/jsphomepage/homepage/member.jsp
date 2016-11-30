@@ -8,6 +8,7 @@
 </head>
 <body>
 <div align=center>
+<br/><br/><br/>
 <h1>회원 가입</h1>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="script.js"></script>
@@ -54,10 +55,6 @@
    				<input type="radio" name="gender" value="여자">여자
    				</td>
    			</tr>
-			<tr>
-				<td bgcolor=lightyellow>num2 </td>
-  				<td align=left><input type="text" name="num2"  maxlength=7 ></td>
-  			</tr>
 			<tr>
 				<td bgcolor=lightyellow>이메일 </td>
   				<td align=left><input type="text" name="email" maxlength=30 size=40></td>
