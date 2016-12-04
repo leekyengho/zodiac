@@ -1,67 +1,87 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.Vector,board.*,java.text.SimpleDateFormat" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE HTML>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- íŒŒì¼ boardForm.js : í¼ì˜ ê° ì…ë ¥ ê°’ì´ ìˆëŠ”ì§€ë¥¼ ê²€í† í•˜ëŠ” í•¨ìˆ˜ êµ¬í˜„ -->
+<script language=JavaScript src="boardForm.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-
-<h2>°Ô½ÃÆÇ ¸®½ºÆ® </h2>
-<hr>  
 <center>
-	<% 
-		BoardMgr brddb = new BoardMgr();	 	
-		Vector<BoardBean> list = brddb.getBoardList(); 
-	   	int counter = list.size();
-	   	int row = 0;
-	   	
-	   	if (counter > 0) {
-	%>
-    <table width=800  cellpadding=3 cellspacing=3 >
-    
-    <tr>
-       <th width=60 bgcolor=lightgray><font color=blue><b>¹øÈ£</b></font></th>
-       <th width=430 bgcolor=lightgray><font color=blue><b>Á¦¸ñ</b></font></th>
-       <th width=80 bgcolor=lightgray><font color=blue><b>ÀÛ¼ºÀÚ</b></font></th>
-       <th width=170 bgcolor=lightgray><font color=blue><b>ÀÛ¼ºÀÏ</b></font></th>
-       <th width=60 bgcolor=lightgray><font color=blue><b>Á¶È¸¼ö</b></font></th>
-    </tr>
-	<%
-		//°Ô½Ã µî·ÏÀÏÀ» 2010-3-15 10:33:21 ÇüÅÂ·Î Ãâ·ÂÇÏ±â À§ÇÑ Å¬·¡½º 
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		for( BoardBean brd : list ) {
-			//È¦Â¦À¸·Î ´Ù¸£°Ô »ö»ó ÁöÁ¤
-			String color = "papayawhip";
-			if ( ++row % 2 == 0 ) color = "white"; 
-	%>
-    <tr bgcolor=<%=color %> 
-		onmouseover="this.style.backgroundColor='SkyBlue'"
-    	onmouseout="this.style.backgroundColor='<%=color %>'">
-		<!-- ¼öÁ¤°ú »èÁ¦¸¦ À§ÇÑ ¸µÅ©·Î id¸¦ Àü¼Û -->
-       <td align=center><%= brd.getNum()%></td>
-       <td align=left><a href="template.jsp?page=/board/readBoard&num=<%= brd.getNum()%>"><%= brd.getTitle() %></a></td>
-       <td align=center><%= brd.getName() %></td>
-		<!-- °Ô½Ã ÀÛ¼ºÀÏÀ» 2010-3-15 10:33:21 ÇüÅÂ·Î Ãâ·Â -->
-       <td align=center><%= df.format(brd.getRegdate()) %></td>
-       <td align=center><%= brd.getHit() %></td>
-    </tr>
-	<%
-	    }  
-	%>
-	</table>
-<% 	}
-%>
-
-<hr width=80%>
-<p>Á¶È¸µÈ °Ô½ÃÆÇ ¸ñ·Ï ¼ö°¡ <%=counter%>°³ ÀÔ´Ï´Ù.
-<br><br>
-<form name=form method=post action=template.jsp?page=/board/editBoard>
-      <input type=submit value="±Û¾²±â"> 
-</form>
+	<div class="wrapper">
+		<jsp:include page="/homepage/head.jsp" />
+	</div>
+	<div id="content">
+		<h2>ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸ </h2>
+		<hr>  
+		<center>
+			<% 
+				BoardMgr brddb = new BoardMgr();	 	
+				Vector<BoardBean> list = brddb.getBoardList(); 
+			   	int counter = list.size();
+			   	int row = 0;
+			   	
+			   	if (counter > 0) {
+			%>
+		    <table width=800  cellpadding=3 cellspacing=3 >
+		    
+		    <tr>
+		       <th width=60 bgcolor=lightgray><font color=blue><b>ë²ˆí˜¸</b></font></th>
+		       <th width=430 bgcolor=lightgray><font color=blue><b>ì œëª©</b></font></th>
+		       <th width=80 bgcolor=lightgray><font color=blue><b>ì‘ì„±ì</b></font></th>
+		       <th width=170 bgcolor=lightgray><font color=blue><b>ì‘ì„±ì¼</b></font></th>
+		       <th width=60 bgcolor=lightgray><font color=blue><b>ì¡°íšŒìˆ˜</b></font></th>
+		    </tr>
+			<%
+				//ê²Œì‹œ ë“±ë¡ì¼ì„ 2010-3-15 10:33:21 í˜•íƒœë¡œ ì¶œë ¥í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤ 
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				for( BoardBean brd : list ) {
+					//í™€ì§ìœ¼ë¡œ ë‹¤ë¥´ê²Œ ìƒ‰ìƒ ì§€ì •
+					String color = "papayawhip";
+					if ( ++row % 2 == 0 ) color = "white"; 
+			%>
+		    <tr bgcolor=<%=color %> 
+				onmouseover="this.style.backgroundColor='SkyBlue'"
+		    	onmouseout="this.style.backgroundColor='<%=color %>'">
+				<!-- ìˆ˜ì •ê³¼ ì‚­ì œë¥¼ ìœ„í•œ ë§í¬ë¡œ idë¥¼ ì „ì†¡ -->
+		       <td align=center><%= brd.getNum()%></td>
+		       <td align=left><a href="readBoard.jsp&num=<%= brd.getNum()%>"><%= brd.getTitle() %></a></td>
+		       <td align=center><%= brd.getName() %></td>
+				<!-- ê²Œì‹œ ì‘ì„±ì¼ì„ 2010-3-15 10:33:21 í˜•íƒœë¡œ ì¶œë ¥ -->
+		       <td align=center><%= df.format(brd.getRegdate()) %></td>
+		       <td align=center><%= brd.getHit() %></td>
+		    </tr>
+			<%
+			    }  
+			%>
+			</table>
+		<% 	}
+		%>
+		
+		<hr width=80%>
+		<p>ì¡°íšŒëœ ê²Œì‹œíŒ ëª©ë¡ ìˆ˜ê°€ <%=counter%>ê°œ ì…ë‹ˆë‹¤.
+		<br><br>
+		<form name=form method=post action="editBoard.jsp">
+		      <input type=submit value="ê¸€ì“°ê¸°"> 
+		</form>
+		</center>
+	</div>
+	<div id="foot">
+		<jsp:include page="/homepage/foot.jsp" />
+	</div>
 </center>
-
 </body>
 </html>

@@ -1,36 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<!DOCTYPE HTML>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-<h2>ÆÐ½º¿öµå ÀÔ·Â  </h2> <hr> <br><br>
-<form method=post action=template.jsp?page=/board/deleteBoard.jsp>
-<input type=hidden name="num" value=<%=request.getParameter("num") %>>
-<div align=center>
-<table width=300 cellspacing=10 cellpadding=5>
-	<tr>
-		<td colspan=2 bgcolor=papayawhip>ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.</td>
-	</tr>
-	<tr>
-		<td align=right> ºñ¹Ð¹øÈ£ </td>
-		<td align=left> <input type=password  name=passwd size=20 maxlength=20></td>
-	</tr>
-	<tr>
-		<td colspan=2><hr color=papayawhip size=1></td>
-	</tr>
-	<tr>
-		<td colspan=2 align=center>
-			<input type=submit value="È®ÀÎ" >
-	    	<input type=reset value="´Ù½Ã¾²±â" > 
-			<input type=button value="Ãë¼Ò" onClick="history.go(-1)">
-		</td>
-	</tr>
-</table>
-</div>
-</form>
+<center>
+	<div class="wrapper">
+		<jsp:include page="/homepage/head.jsp" />
+	<div id="content">
+		<h2>íŒ¨ìŠ¤ì›Œë“œ ìž…ë ¥  </h2> <hr> <br><br>
+		<form method=post action=template.jsp?page=/board/deleteBoard.jsp>
+		<input type=hidden name="num" value=<%=request.getParameter("num") %>>
+		<div align=center>
+		<table width=300 cellspacing=10 cellpadding=5>
+			<tr>
+				<td colspan=2 bgcolor=papayawhip>ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ì„¸ìš”.</td>
+			</tr>
+			<tr>
+				<td align=right> ë¹„ë°€ë²ˆí˜¸ </td>
+				<td align=left> <input type=password  name=passwd size=20 maxlength=20></td>
+			</tr>
+			<tr>
+				<td colspan=2><hr color=papayawhip size=1></td>
+			</tr>
+			<tr>
+				<td colspan=2 align=center>
+					<input type=submit value="í™•ì¸" >
+			    	<input type=reset value="ë‹¤ì‹œì“°ê¸°" > 
+					<input type=button value="ì·¨ì†Œ" onClick="history.go(-1)">
+				</td>
+			</tr>
+		</table>
+		</div>
+		</form>
+	</div>
+	<div id="foot">
+		<jsp:include page="/homepage/foot.jsp" />
+	</div>
+</center>
 </body>
 </html>

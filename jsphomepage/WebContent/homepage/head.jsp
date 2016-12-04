@@ -30,7 +30,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="template.jsp?page=/board/listBoard">자유게시판</a>
+					<a href="board/listBoard.jsp">자유게시판</a>
 				</li>
 				<li>
 					<a href="#">방명록</a>

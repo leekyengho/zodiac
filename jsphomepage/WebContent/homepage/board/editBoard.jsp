@@ -1,17 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="board.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE HTML>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<!-- ÆÄÀÏ boardForm.js : ÆûÀÇ °¢ ÀÔ·Â °ªÀÌ ÀÖ´ÂÁö¸¦ °ËÅäÇÏ´Â ÇÔ¼ö ±¸Çö -->
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- íŒŒì¼ boardForm.js : í¼ì˜ ê° ìž…ë ¥ ê°’ì´ ìžˆëŠ”ì§€ë¥¼ ê²€í† í•˜ëŠ” í•¨ìˆ˜ êµ¬í˜„ -->
 <script language=JavaScript src="boardForm.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<%
+<center>
+	<div class="wrapper">
+		<jsp:include page="/homepage/head.jsp" />
+	<div id="content">
+			<%
 		String name = ""; 
 		String email = ""; 
 		String title = ""; 
@@ -32,64 +46,69 @@
 		};
 	%>
 
-<h2>°Ô½ÃÆÇ <%=headline %>  </h2> <hr>
-
-<center>
-<form name=boardForm method=post action="template.jsp?page=/board/processBoard" >
-<!-- ¼öÁ¤:  °Ô½Ã id¸¦ hiddenÀ¸·Î Àü¼Û -->
-<input type=hidden name="num" value=<%=num %>>
-<input type=hidden name="menu" value="insert">
-<table width=700 border=0 cellspacing=0 cellpadding=7>
- <tr>
-  <td align=center>
-	<table >
-		<tr> 
-			<td colspan=2>
-				<table  width=650>
-				    <tr>
-					     <td  align=left>ÀÌ ¸§: </td>
-					     <td align=left>
-							<input type=text name=name value="<%=name%>" size=30 maxlength=20></td>
-					     <td  align=left>ÀüÀÚ¸ÞÀÏ:</td>
-					     <td>
-							<input type=text name=email size=30 value="<%=email%>" maxlength=30 ></td>
-				    </tr>	
-					<tr >
-				     <td align=left>Á¦ ¸ñ: </td>
-				     <td colspan=3 align=left>
-						<input type=text name=title size=80 value="<%=title%>" maxlength=100></td>
-					</tr>
-				</table>
-			</td> 
-		</tr>
-	    <tr>
-		    <td colspan=2 align=left>
-					<textarea name=content rows=10 cols=90><%=content%></textarea></td>
-		</tr>
-		<tr>
-		    <td colspan=2 align=left>ºñ¹Ð¹øÈ£ :
-			     <input type=password name=passwd size=20 maxlength=20><font color=red>  
-		         	°Ô½Ã ³»¿ëÀ» ¼öÁ¤ ¶Ç´Â »èÁ¦ÇÏ·Á¸é ºñ¹Ð¹øÈ£°¡ ÇÊ¿äÇÕ´Ï´Ù.</font></td>
-	    </tr>
-		<tr>
-	     	<td colspan=2 height=5><hr size=2></td>
-	    </tr>
-		<tr>
-		     <td colspan=2>
-				<% if (num == null) { %>	
-				 		<input type=button value="µî·Ï" onClick="insertCheck()">
-				<% } else { %>
-		  				<input type=button value="¼öÁ¤¿Ï·á" onClick="updateCheck()">			    	
-				<% } %>
-						
-				<input type=button value="¸ñ·Ïº¸±â" onClick="location.href='template.jsp?page=/board/listBoard'"> 				
-			 </td>
-	    </tr> 
-   	</table> 
-   </td>
- </tr> 	 	
-</table>
-</form>
+	<h2>ê²Œì‹œíŒ <%=headline %>  </h2> <hr>
+	
+	<center>
+	<form name=boardForm method=post action="processBoard.jsp" >
+	<!-- ìˆ˜ì •:  ê²Œì‹œ idë¥¼ hiddenìœ¼ë¡œ ì „ì†¡ -->
+	<input type=hidden name="num" value=<%=num %>>
+	<input type=hidden name="menu" value="insert">
+	<table width=700 border=0 cellspacing=0 cellpadding=7>
+	 <tr>
+	  <td align=center>
+		<table >
+			<tr> 
+				<td colspan=2>
+					<table  width=650>
+					    <tr>
+						     <td  align=left>ì´ ë¦„: </td>
+						     <td align=left>
+								<input type=text name=name value="<%=name%>" size=30 maxlength=20></td>
+						     <td  align=left>ì „ìžë©”ì¼:</td>
+						     <td>
+								<input type=text name=email size=30 value="<%=email%>" maxlength=30 ></td>
+					    </tr>	
+						<tr >
+					     <td align=left>ì œ ëª©: </td>
+					     <td colspan=3 align=left>
+							<input type=text name=title size=80 value="<%=title%>" maxlength=100></td>
+						</tr>
+					</table>
+				</td> 
+			</tr>
+		    <tr>
+			    <td colspan=2 align=left>
+						<textarea name=content rows=10 cols=90><%=content%></textarea></td>
+			</tr>
+			<tr>
+			    <td colspan=2 align=left>ë¹„ë°€ë²ˆí˜¸ :
+				     <input type=password name=passwd size=20 maxlength=20><font color=red>  
+			         	ê²Œì‹œ ë‚´ìš©ì„ ìˆ˜ì • ë˜ëŠ” ì‚­ì œí•˜ë ¤ë©´ ë¹„ë°€ë²ˆí˜¸ê°€ í•„ìš”í•©ë‹ˆë‹¤.</font></td>
+		    </tr>
+			<tr>
+		     	<td colspan=2 height=5><hr size=2></td>
+		    </tr>
+			<tr>
+			     <td colspan=2>
+					<% if (num == null) { %>	
+					 		<input type=button value="ë“±ë¡" onClick="insertCheck()">
+					<% } else { %>
+			  				<input type=button value="ìˆ˜ì •ì™„ë£Œ" onClick="updateCheck()">			    	
+					<% } %>
+							
+					<input type=button value="ëª©ë¡ë³´ê¸°" onClick="location.href='listBoard.jsp'"> 				
+				 </td>
+		    </tr> 
+	   	</table> 
+	   </td>
+	 </tr> 	 	
+	</table>
+	</form>
+	</center>
+	</div>
+	<div id="foot">
+		<jsp:include page="/homepage/foot.jsp" />
+	</div>
 </center>
 </body>
 </html>
