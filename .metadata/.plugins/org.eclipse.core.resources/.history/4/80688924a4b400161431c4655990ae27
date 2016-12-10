@@ -1,3 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%>
-<img src ="images/123.png" border=1>
-<%@ include file="/homepage/sessionMemberLogIn.jsp"%>

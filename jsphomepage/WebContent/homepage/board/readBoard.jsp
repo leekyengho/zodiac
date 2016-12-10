@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <%@ page import="board.*,java.text.SimpleDateFormat" %>
 <!DOCTYPE HTML>
 <head>
-<meta charset="utf-8"/>
+<meta charset="EUC-KR"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script
@@ -15,16 +15,16 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script >
-<!--
+
 function deleteConfirm(num) {
-	ok = confirm("ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+	ok = confirm("»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
 	if (ok) {
 		location.href = "passwordBoard.jsp?num=" + num ;
 	} else {
 		return;
 	}			
 }
--->
+
 </script>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -61,7 +61,7 @@ function deleteConfirm(num) {
 		};
 	%>		
 
-		<h2>ê²Œì‹œíŒ ë³´ê¸° í”„ë¡œê·¸ëž¨ </h2> <hr>
+		<h2>°Ô½ÃÆÇ º¸±â ÇÁ·Î±×·¥ </h2> <hr>
 		
 		<div align=center>
 		<table width=700 border=0 cellspacing=0 cellpadding=7>
@@ -71,19 +71,19 @@ function deleteConfirm(num) {
 		 	    <td>
 					<table width=650 border=1 cellspacing=0 cellpadding=5 >
 					    <tr>
-					     <td width=100 bgcolor=papayawhip align=left>ì´ ë¦„  </td>
+					     <td width=100 bgcolor=papayawhip align=left>ÀÌ ¸§  </td>
 					     <td width=180 align=left><%=name %> </td>
-					     <td width=100 bgcolor=papayawhip align=left>ì „ìžë©”ì¼ </td>
+					     <td width=100 bgcolor=papayawhip align=left>ÀüÀÚ¸ÞÀÏ </td>
 					     <td align=left ><%=email %></td>
 					    </tr>	
 					    <tr>
-					     <td width=100 bgcolor=papayawhip align=left>ìž‘ì„±ì¼ </td>
+					     <td width=100 bgcolor=papayawhip align=left>ÀÛ¼ºÀÏ </td>
 					     <td width=180 align=left><%=regdate %> </td>
-					     <td width=100 bgcolor=papayawhip align=left>ì¡°íšŒìˆ˜</td>
+					     <td width=100 bgcolor=papayawhip align=left>Á¶È¸¼ö</td>
 					     <td align=left><%=hit %></td>
 					    </tr>	
 						<tr >
-					     <td width=100  bgcolor=papayawhip align=left>ì œ ëª© </td>
+					     <td width=100  bgcolor=papayawhip align=left>Á¦ ¸ñ </td>
 					     <td colspan=3 align=left><%=title %></td>
 						</tr>
 					    <tr height=300><td colspan=4 align=left valign=top><%=content%></td>
@@ -96,10 +96,10 @@ function deleteConfirm(num) {
 			    </tr>
 				<tr>
 			     <td colspan=4>
-			  		<input type=button value="ìˆ˜ì •" onClick="editBoard.jsp&num=<%=num %>'">
-			    	<input type=button value="ì‚­ì œ" onClick="deleteConfirm(<%=num%>)"> 
-					<!-- ëª©ë¡ë³´ê¸° ë²„íŠ¼ì€ listboard.jspë¡œ ì´ë™ -->
-					<input type=button value="ëª©ë¡ë³´ê¸°" onClick="location.href='listBoard.jsp'">
+			  		<input type=button value="¼öÁ¤" onClick="location.href='editBoard.jsp?num=<%=num%>'">
+			    	<input type=button value="»èÁ¦" onClick="deleteConfirm(<%=num%>)"> 
+					<!-- ¸ñ·Ïº¸±â ¹öÆ°Àº listboard.jsp·Î ÀÌµ¿ -->
+					<input type=button value="¸ñ·Ïº¸±â" onClick="location.href='listBoard.jsp'">
 				 </td>
 			    </tr> 
 		   	</table>  	

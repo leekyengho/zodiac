@@ -1,0 +1,68 @@
+<%-- 
+    Document   : index
+    Created on : 2012. 8. 23, 오전 10:49:24
+    Author     : u-lab1
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="guestbook_error.jsp"%>
+<%@page import="java.util.*" %>
+<% response.setCharacterEncoding("utf-8"); %>
+
+<jsp:useBean id="gb" class="guestboard.GuestBean" scope="page" />
+
+<%
+ ArrayList datas = gb.selectDBList();
+ Iterator iter = datas.iterator();
+%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>방명록</title>
+    </head>
+    <body>
+    <center>
+        <h1> 방명록 </h1>
+        <hr>
+        <a href="guestbook_form.jsp">방명록 쓰기</a><p>
+                <%
+                 while(iter.hasNext()){
+                     HashMap data = (HashMap)iter.next();
+                 
+                %>
+        <form name="<%= data.get("gb_id")%>" action="guest_edit_form.jsp" method="post">
+            <input type="hidden" name="gb_id" value="<%= data.get("gb_id") %>" >
+            
+            <table cellpadding="5" cellspacing="0" border="1" width="400">
+                <tr>
+                    <td bgcolor="#99CCFF" height="23">작 성 자</td>
+                    <td><%= data.get("gb_name") %></td>
+                    <td bgcolor="#99CCFF" height="23">작 성 일</td>
+                    <td><%= data.get("gb_date") %></td>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td bgcolor="#99CCFF" height="23">email</td>
+                    <td colspan="3"><%= data.get("gb_email") %></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="4"><%= data.get("gb_contents") %></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="4">비밀번호 <input type="password" name="gb_passwd" size="6">
+                        <input type="submit" value="수정/삭제"></td>
+                </tr>
+            </table>
+            </p>
+        </form>
+                <p>
+                    <%
+                      }
+                    %>
+    </center>
+    </body>
+</html>

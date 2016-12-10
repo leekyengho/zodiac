@@ -1,0 +1,5 @@
+package guestboard;
+
+public class GuestBean {
+
+}

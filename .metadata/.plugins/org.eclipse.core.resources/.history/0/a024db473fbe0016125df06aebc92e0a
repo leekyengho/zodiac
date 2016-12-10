@@ -1,0 +1,26 @@
+function goList() {
+    f1.act.value="BLIST";
+    f1.act.method="GET";
+    f1.submit();
+}
+
+function goWrite() {
+    f1.act.value="BWRITE";
+    f1.act.method="GET";
+    f1.seq.value="";
+    f1.submit();
+}
+
+function goReply(n) {
+    f1.act.value="BREPLY";
+    f1.act.method="POST";
+    f1.seq.value=n;
+    f1.submit();
+}
+
+function goPassword(toLink) {
+    f1.act.value="BPASS";
+    f1.link.value=toLink;
+    f1.act.method="POST";
+    f1.submit();
+}

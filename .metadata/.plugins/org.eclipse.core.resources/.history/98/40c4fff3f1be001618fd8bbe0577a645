@@ -1,0 +1,10 @@
+package guestbook;
+
+public class GuestBean {
+	private int gb_id;
+	private String gb_name;
+	private String gb_email;
+	private String gb_date;
+	private String gb_passwd;
+	private String gb_contents;  
+}

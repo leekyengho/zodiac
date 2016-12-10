@@ -1,0 +1,79 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="guestbook_error.jsp" %>
+<%@page import = "guestboard.*" %>
+<% response.setCharacterEncoding("utf-8"); %>
+
+<%
+		String name = ""; 
+		String email = ""; 
+		String title = ""; 
+		String content = "";
+		String headline = "insert";
+		
+		String num = request.getParameter("num");
+		if (num != null) { 
+			int idnum = Integer.parseInt(num);
+			
+			GuestMgr beandb = new GuestMgr(); 
+			BoardBean bean = beandb.getBoard(idnum);  
+			name = bean.getName();
+			email = bean.getEmail();
+			title = bean.getTitle();
+			content = bean.getContent();
+			headline = "update";
+		};
+%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>방명록</title>
+        <script language="javascript">
+            function del_confirm(){
+                yn = confirm("Delete Sure?");
+                if(yn){
+                    form1.action.value="delete";
+                    form1.submit();
+                }
+            }
+            </script>
+    </head>
+    <body>
+    <center>
+        <h1>방명록 : 수정하기</h1>
+        <form name="form1" method="post" action="guestbook_control.jsp">
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="gb_id" value="<jsp:getProperty name="gb" property="gb_id" />">
+            
+            <table cellpadding="5" cellspacing="0" border="1">
+                <tr>
+                    <td bgcolor="#99CCFF">작 성 자</td>
+                    <td><input type="text" name="gb_name" size="20" value="<jsp:getProperty name="gb" property="gb_name"/>"></td>
+                </tr>
+                
+                <tr>
+                    <td bgcolor="#99CCFF">email</td>
+                    <td><input type="text" name="gb_email" size="20" value="<jsp:getProperty name="gb" property="gb_email"/>"></td>
+                </tr>
+                
+                <tr>
+                    <td bgcolor="#99CCFF">비밀번호</td>
+                    <td><input type="password" name="gb_passwd" size="20" value="<jsp:getProperty name="gb" property="gb_passwd"/>"></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2"><textarea rows="5" name="gb_contents" cols="40"><jsp:getProperty name="gb" property="gb_contents"/></textarea></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="저장">
+                        <input type="reset" value="취소">
+                        <input type="button" value="삭제" onClick="del_confirm()">                        
+                    </td>
+                </tr>
+            </table>
+        </form>
+                <a href ="guestbook_list.jsp">목록으로</a>
+    </center>
+    </body>
+</html>

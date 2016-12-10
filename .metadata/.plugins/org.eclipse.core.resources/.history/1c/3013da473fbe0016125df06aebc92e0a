@@ -1,0 +1,51 @@
+<%@ page errorPage="error.jsp"
+        import="java.sql.*, javax.sql.*, javax.naming.*"
+    contentType="text/html; charset=euc-kr"     
+%>
+<%
+	request.setCharacterEncoding("euc-kr");
+	response.setCharacterEncoding("euc-kr");
+    String QUERY_INSERT="INSERT INTO GUESTBOOK (SEQ, NAME, EMAIL, HOMEPAGE, SUBJECT, CONTENT, PASSWORD, LOGTIME) VALUES (SEQ_GUESTBOOK.NEXTVAL,?,?,?,?,?,?,SYSDATE)";
+    String msg = "방명록 글쓰기 완료.";
+    String link = "list.jsp";
+
+    String name     = request.getParameter("name");
+    String email    = request.getParameter("email");
+    String homepage = request.getParameter("homepage");
+    String subject  = request.getParameter("subject");
+    String content  = request.getParameter("content");
+    String password = request.getParameter("password");
+
+    Context initContext = new InitialContext();
+    Context envContext  = (Context)initContext.lookup("java:/comp/env");
+    DataSource ds = (DataSource)envContext.lookup("jdbc/oraclePool");
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    try {
+        conn = ds.getConnection();
+        pstmt = conn.prepareStatement(QUERY_INSERT);
+        pstmt.setString(1, name);
+        pstmt.setString(2, email);
+        pstmt.setString(3, homepage);
+        pstmt.setString(4, subject);
+        pstmt.setString(5, content);
+        pstmt.setString(6, password);
+
+        int result = pstmt.executeUpdate();
+        pstmt.close();
+
+        if (result==0) {
+            throw new Exception("Exception ....");
+        }
+
+    } catch (Exception e) {
+        throw e;
+    } finally {
+        conn.close();
+    }
+%>
+<form name="f1" action="message.jsp" method="post">
+    <input type="hidden" name="msg" value="<%= msg %>">
+    <input type="hidden" name="link" value="<%= link %>">
+</form>
+<script>document.f1.submit();</script>

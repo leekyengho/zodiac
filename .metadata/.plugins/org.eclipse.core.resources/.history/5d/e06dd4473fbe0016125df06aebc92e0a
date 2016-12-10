@@ -1,0 +1,27 @@
+// submit 전에 검사필드 검사
+function checkValue(n) {
+    if( checkField(n.name, "이름을")
+        || checkField(n.password, "비밀번호를")
+        || checkField(n.subject, "제목을")
+        || checkField(n.content, "내용을") ) {
+        return false;
+    }
+    return true;
+}
+
+// 필드 길이 검사
+function checkField(obj, msg) {
+    if(sqeeze(obj.value)==0) {
+        alert(msg + " 입력해주세요");
+        obj.focus();
+        return true; // 이상 있음
+    } else {
+        return false; // 이상 없음
+    }
+}
+
+// 문자열 내의 공백 제거 후 길이 반환
+function sqeeze(str) {
+    str = str.replace(/ /g, "");
+    return str.length;
+}

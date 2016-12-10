@@ -1,0 +1,45 @@
+<%@ page errorPage="error.jsp"
+        import="javax.naming.*, javax.sql.*, java.sql.*"
+ contentType="text/html;charset=euc-kr"
+%>
+<%
+    response.setContentType("text/html");
+    String QUERY_DELETE = "DELETE FROM GUESTBOOK WHERE SEQ = ? AND PASSWORD = ?";
+    String msg = "삭제완료";
+    String link = "list.jsp";
+
+    int seq = 0;
+    try {
+        seq = Integer.parseInt(request.getParameter("seq"));
+    } catch (Exception e) {}
+    String password = request.getParameter("password");
+
+    Context initContext = new InitialContext();
+    Context envContext  = (Context)initContext.lookup("java:/comp/env");
+    DataSource ds = (DataSource)envContext.lookup("jdbc/oraclePool");
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    try {
+        conn = ds.getConnection();
+        pstmt = conn.prepareStatement(QUERY_DELETE);
+        pstmt.setInt(1, seq);
+        pstmt.setString(2, password);
+        int count = pstmt.executeUpdate();
+
+        pstmt.close();
+
+        if (count==0) {
+            throw new Exception("Exception ...");
+        }
+    } catch (Exception e) {
+        throw e;
+    } finally {
+        conn.close();
+    }
+
+%>
+<form name="f1" action="message.jsp" method="post">
+    <input type="hidden" name="msg" value="<%= msg %>">
+    <input type="hidden" name="link" value="<%= link %>">
+</form>
+<script>document.f1.submit();</script>

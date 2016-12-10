@@ -1,0 +1,214 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package guestboard;
+
+import java.sql.*;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author u-lab1
+ */
+public class GuestBean {
+    private int gb_id;
+    private String gb_name;
+    private String gb_email;
+    private String gb_date;
+    private String gb_passwd;
+    private String gb_contents;    
+    
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    
+    String jdbc_driver = "com.mysql.jdbc.Driver";
+    String jdbc_url = "jdbc:mysql://localhost/test";
+    String jdbc_user = "root";
+    String jdbc_pwd = "1";            
+    
+    public GuestBean(){  }
+    
+    public void connect(){
+        try{
+            Class.forName(jdbc_driver);
+            conn = DriverManager.getConnection(jdbc_url, jdbc_user, jdbc_pwd);
+        }catch(Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
+    
+    public void disconnect(){
+        try{
+            if(pstmt != null) pstmt.close();
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("close");
+    }
+    
+    public String parsing(String data){
+        try{
+        data = new String(data.getBytes("8859_1"), "utf-8");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return data;
+    }
+    
+    public boolean insertDB(){
+        connect();
+        try{     
+            pstmt = conn.prepareStatement("insert into guestbook values (null, ?,?,NOW(),?,?)");
+            pstmt.setString(1, gb_name);
+            pstmt.setString(2, gb_email);
+            pstmt.setString(3, gb_passwd);
+            pstmt.setString(4, gb_contents);
+            pstmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("insertDB() : " + e);
+            return false;
+        }finally{
+            disconnect();
+        }
+        return true;
+    }
+    
+    public boolean deleteDB(){
+        connect();
+        try{
+            pstmt = conn.prepareStatement("delete from guestbook where gb_id = ?");
+            pstmt.setInt(1, gb_id);
+            pstmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("deleteDB() : " + e);
+            return false;
+        }finally{
+            disconnect();
+        }
+        return true;
+    }
+    
+    public boolean updateDB(){
+        connect();
+        
+        try{
+            pstmt = conn.prepareStatement("update guestbook set gb_name = ?, gb_email = ?, gb_passwd = ?, gb_contents= ?, gb_date = NOW()"
+                    + " where gb_id=?");
+            pstmt.setString(1, gb_name);
+            pstmt.setString(2, gb_email);
+            pstmt.setString(3, gb_passwd);
+            pstmt.setString(4, gb_contents);
+            pstmt.setInt(5, gb_id);
+            pstmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("updateDB() : " + e);
+            return false;
+        }finally{
+            disconnect();
+        }
+        return true;
+    }
+    
+    public ArrayList selectDBList(){
+        connect();
+        HashMap data = null;
+        ArrayList data_list = new ArrayList();
+        
+        try{
+            pstmt = conn.prepareStatement("select * from guestbook");
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                data = new HashMap();
+                data.put("gb_id", rs.getString("gb_id"));
+                data.put("gb_name", rs.getString("gb_name"));
+                data.put("gb_email", rs.getString("gb_email"));
+                data.put("gb_passwd", rs.getString("gb_passwd"));
+                data.put("gb_contents", rs.getString("gb_contents"));
+                data.put("gb_date", rs.getString("gb_date"));
+                data_list.add(data);
+            }
+        }catch(Exception e){
+            System.out.println("selectDBList() : " + e);
+        }finally{
+            disconnect();
+        }
+        return data_list;
+    }
+    
+    public void selectDB(){
+        connect();
+        try{
+            pstmt = conn.prepareStatement("select * from guestbook where gb_id=?");
+            pstmt.setInt(1, gb_id);
+            
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                gb_name = rs.getString("gb_name");
+                gb_email = rs.getString("gb_email");
+                gb_passwd = rs.getString("gb_passwd");
+                gb_contents = rs.getString("gb_contents");
+                gb_date = rs.getString("gb_date");
+            }            
+        }catch(Exception e){
+            System.out.println("updateDB() : " + e);            
+        }finally{
+            disconnect();
+        }
+    }
+    
+    public boolean checkPasswd(String passwd){
+        if(passwd.equals(gb_passwd))
+            return true;
+        else
+            return false;
+    }
+    
+    public void setGb_id(int gb_id){ // increment로 작성 시에는 필요 없으나, 수정/삭제 부분에서 필요
+        this.gb_id = gb_id;
+    }
+
+    public void setGb_name(String gb_name) {
+        this.gb_name = gb_name;
+    }
+
+    public void setGb_email(String gb_email) {
+        this.gb_email = gb_email;
+    }
+
+    public void setGb_passwd(String gb_passwd) {
+        this.gb_passwd = gb_passwd;
+    }
+
+    public void setGb_contents(String gb_contents) {
+        this.gb_contents = gb_contents;
+    }
+
+    public int getGb_id() {
+        return gb_id;
+    }
+
+    public String getGb_name() {
+        return gb_name;
+    }
+
+    public String getGb_email() {
+        return gb_email;
+    }
+
+    public String getGb_date() {
+        return gb_date;
+    }
+
+    public String getGb_passwd() {
+        return gb_passwd;
+    }
+
+    public String getGb_contents() {
+        return gb_contents;
+    }
+    
+    
+        
+}

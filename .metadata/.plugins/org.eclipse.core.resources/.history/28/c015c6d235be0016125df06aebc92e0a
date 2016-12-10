@@ -1,0 +1,15 @@
+package guestboard;
+
+import java.util.Date;
+
+public class GuestBean {
+	
+	 	private int gb_id;
+	    private String gb_name;
+	    private String gb_email;
+	    private Date gb_date;
+	    private String gb_passwd;
+	    private String gb_contents;
+	    
+		
+}

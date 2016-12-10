@@ -9,7 +9,7 @@
 %>
  <script>
  	alert("로그인하세요");
- 	location.href = "index.jsp";
+ 	location.href = "http://localhost:8080/jsphomepage/homepage/index.jsp";
  </script>
 <%
  }

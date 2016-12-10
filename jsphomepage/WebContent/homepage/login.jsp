@@ -33,13 +33,13 @@
 		if(id.equals("master")) {
 %>
 <b><%=id %></b>관리자님 안녕하세요
-<a href="sessionLogOut.jsp">로그아웃</a>
+<a href="logout.jsp">로그아웃</a>
 <a href="memberList.jsp" target="_blank">회원관리</a>
 <%
 		}else{
 %>
 <b><%=id %></b>일반유저님 안녕하세요
-<a href="sessionLogOut.jsp">로그아웃</a>
+<a href="logout.jsp">로그아웃</a>
 <a href="modifyMember.jsp?id=<%=id%>" target="_black">개인정보수정</a>
 <%
 }

@@ -1,0 +1,179 @@
+package guestboard;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
+import ch10.DBConnectionMgr;
+
+public class GuestMgr {
+
+	private DBConnectionMgr pool = null;
+	private Connection con = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+	
+	public GuestMgr() {
+		try{
+			pool = DBConnectionMgr.getInstance();
+ 	   	}catch(Exception e){
+ 	   		System.out.println("Error : Ŀ�ؼ� ������ ����");
+ 	   	}
+     }
+	
+
+    public Vector<GuestBean> getBoardList() {   
+        String sql = null;
+ 	    Vector<GuestBean> vecList = new Vector<GuestBean>();	   
+ 	   
+        try {
+           con = pool.getConnection();
+           sql = "select * from guestboard order by gb_id desc";
+           pstmt = con.prepareStatement(sql);
+           rs = pstmt.executeQuery();
+           
+ 		   while (rs.next()) {
+ 			 GuestBean bean = new GuestBean();
+ 			 bean.setGb_id( rs.getInt("gb_id") );  
+			 bean.setGb_name( rs.getString("gb_name") );
+			 bean.setGb_email( rs.getString("gb_email") );
+			 bean.setGb_passwd( rs.getString("gb_passwd") );
+			 bean.setGb_contents( rs.getString("gb_contents") );
+			 bean.setGb_date( rs.getTimestamp("gb_date") );
+             vecList.add(bean);
+           }
+        } catch (Exception e) {
+        	e.printStackTrace();
+        } finally {
+ 	      pool.freeConnection(con, pstmt, rs);
+        }
+        return vecList;
+     }
+    
+///////////////////////////////////////////////////////
+
+    public GuestBean getBoard(int gb_id) {   
+        String sql = null;
+        GuestBean bean = new GuestBean();   
+ 	   
+        try {
+           con = pool.getConnection();
+           sql = "select * from guestboard where gb_id = ?";
+           pstmt = con.prepareStatement(sql);
+           pstmt.setInt(1, gb_id);
+           rs = pstmt.executeQuery();
+           
+ 		   rs.next();
+
+		   bean.setGb_id( rs.getInt("gb_id") );  
+		   bean.setGb_name( rs.getString("gb_name") );
+		   bean.setGb_email( rs.getString("gb_email") );
+		   bean.setGb_passwd( rs.getString("gb_passwd") );
+		   bean.setGb_contents( rs.getString("gb_contents") );
+		   bean.setGb_date( rs.getTimestamp("gb_date") );
+           
+        } catch (Exception e) {
+        	e.printStackTrace();
+        } finally {
+ 	      pool.freeConnection(con, pstmt, rs);
+        }
+        return bean;
+     }
+    
+
+//////////////////////////////////////////////////////////////////////////////
+    
+	public boolean insertBoard(GuestBean bean) {
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "insert into guestboard values(0, ?, ?, sysdate(), ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bean.getGb_name());
+			pstmt.setString(2, bean.getGb_email());
+			pstmt.setString(3, bean.getGb_passwd());
+			pstmt.setString(4, bean.getGb_contents());
+			
+			if (pstmt.executeUpdate() == 1)
+				flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
+	
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+	public boolean updateBoard(GuestBean bean) {
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "update guestboard set gb_name=?, gb_email=?, gb_contents=? where gb_id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bean.getGb_name());
+			pstmt.setString(2, bean.getGb_email());
+			pstmt.setString(3, bean.getGb_contents());
+			pstmt.setInt(4, bean.getGb_id());
+			
+			if (pstmt.executeUpdate() == 1)
+				flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
+	
+/////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public boolean isPasswd(int gb_id, String passwd) {
+		String sql = null;
+		boolean flag = false;
+		
+		try{
+			con = pool.getConnection();
+			sql = "select gb_passwd from guestboard where gb_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, gb_id);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			String orgPasswd = rs.getString(1);
+			
+			if(passwd.equals(orgPasswd))
+				flag = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}	
+	
+	public boolean deleteBoard(int gb_id) {
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "delete from guestboard where gb_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, gb_id);
+			
+			if(pstmt.executeUpdate() == 1)
+				flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
+}//class
