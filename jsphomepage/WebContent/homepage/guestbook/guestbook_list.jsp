@@ -40,6 +40,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 			   		
 			   	if (counter > 0) {
 			%>
+			
 		    <table width=800  cellpadding=3 cellspacing=3 >
 		    
 		    <tr>
@@ -65,18 +66,18 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 			  		<input class="btn btn-primary" type=button value="수정" onClick="location.href='guest_edit_form.jsp?gb_num=<%=brd.getGb_num()%>'">
 			  	</td>
 			  	<td>
-			  		<form name=boardForm method=post action="guestbook_control.jsp" >
+			  		
 						<!-- 수정:  게시 id를 hidden으로 전송 -->
-						<input type=hidden name="gb_num" value=<%=brd.getGb_num() %>>
 						<input type=hidden name="menu" value="delete">
-			    	<input class="btn btn-danger" type=button value="삭제" onClick="deleteConfirm(<%=brd.getGb_num()%>)"> 
-			    	</form>
+			    	<input class="btn btn-danger" type=button value="삭제" onClick="location.href='guest_delete_form.jsp?gb_num=<%=brd.getGb_num()%>'"> 
+			    	
 				 </td>
 			    </tr> 
 			<%
 			    }  
 			%>
 			</table>
+			
 		<% 	}
 		%>
 		

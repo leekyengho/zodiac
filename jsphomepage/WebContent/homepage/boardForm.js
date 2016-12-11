@@ -29,7 +29,7 @@ function updateCheck() {
 }
 
 function deleteConfirm(count){
-	if ( document.boardForm.gb_num.value=="" ) {
+	if (document.boardForm.gb_num.value=="" ) {
 		alert("��ȣ�� �Է��� �ּ���.");
 		return;
 	}

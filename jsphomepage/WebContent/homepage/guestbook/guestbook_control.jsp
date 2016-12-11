@@ -48,11 +48,19 @@
 	 	} else if (menu.equals("delete")){
 	 %>
 	 <% 
-	 			
-				String gb_num = request.getParameter("gb_num");
+				 String gb_num = request.getParameter("gb_num");
+				String gb_passwd = request.getParameter("gb_passwd");
 				int inum = Integer.parseInt(gb_num);	
+				    
+				if ( !brddb.isPasswd(inum, gb_passwd) ) {
+		%>
+					<!-- 암호가 틀리면 이전 화면으로 이동 -->
+					<script>alert("비밀번호가 다릅니다."); history.go(-1);</script>
+		<%
+				} else {	
 	 			brddb.deleteBoard(inum);
 	 			response.sendRedirect("guestbook_list.jsp");
+				}
 	 	}
 	 %>
 	%>
