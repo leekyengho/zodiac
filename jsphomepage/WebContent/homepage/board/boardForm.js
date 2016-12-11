@@ -1,16 +1,16 @@
 function insertCheck() {
 	if ( document.boardForm.name.value=="" ) {
-		alert("ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		document.boardForm.name.focus();
 		return;
 	}
 	if ( document.boardForm.passwd.value=="" ) {
-		alert("¾ÏÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		document.boardForm.passwd.focus();
 		return;
 	}
 	if ( document.boardForm.title.value=="" ) {
-		alert("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		document.boardForm.passwd.focus();
 		return;
 	}
@@ -20,20 +20,21 @@ function insertCheck() {
 
 function updateCheck() {
 	if ( document.boardForm.name.value=="" ) {
-		alert("ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		document.boardForm.name.focus();
 		return;
 	}
 	if ( document.boardForm.passwd.value=="" ) {
-		alert("¾ÏÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		document.boardForm.passwd.focus();
 		return;
 	}
 	if ( document.boardForm.title.value=="" ) {
-		alert("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		document.boardForm.passwd.focus();
 		return;
 	}
+	alert('update');
 	document.boardForm.menu.value='update';
 	document.boardForm.submit();			
 }

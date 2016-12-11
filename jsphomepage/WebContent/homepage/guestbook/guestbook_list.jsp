@@ -62,7 +62,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 		       <td align=center><%= df.format(brd.getGb_date()) %></td>
 		       <td align=center><%= brd.getGb_content() %></td>
 			     <td>
-			  		<input class="btn btn-primary" type=button value="수정" onClick="location.href='guest_edit_form.jsp?num=<%=num%>'">
+			  		<input class="btn btn-primary" type=button value="수정" onClick="location.href='guest_edit_form.jsp?gb_num=<%=brd.getGb_num()%>'">
 			  	</td>
 			  	<td>
 			    	<input class="btn btn-danger" type=button value="삭제" onClick="deleteConfirm(<%=num%>)"> 

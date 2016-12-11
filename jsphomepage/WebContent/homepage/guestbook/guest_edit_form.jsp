@@ -15,7 +15,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- 파일 boardForm.js : 폼의 각 입력 값이 있는지를 검토하는 함수 구현 -->
-<script language=JavaScript src="boardForm.js"></script>
+<script language=JavaScript src="../board/boardForm.js"></script>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -50,7 +50,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 	<center>
 	<form name=boardForm method=post action="guestbook_control.jsp" >
 	<!-- 수정:  게시 id를 hidden으로 전송 -->
-	<input type=hidden name="num" value=<%=gb_num %>>
+	<input type=hidden name="gb_num" value=<%=gb_num %>>
 	<input type=hidden name="menu" value="insert">
 	<table width=700 border=0 cellspacing=0 cellpadding=7>
 	 <tr>
