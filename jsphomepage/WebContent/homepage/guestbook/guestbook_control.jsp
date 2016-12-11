@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="guestbook.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- °Ô½ÃÀÇ µî·Ï, ¼öÁ¤À» À§ÇØ  ÀÚ¹ÙºóÁî ÀÌ¿ë ¼±¾ð-->
+	<!-- ê²Œì‹œì˜ ë“±ë¡, ìˆ˜ì •ì„ ìœ„í•´  ìžë°”ë¹ˆì¦ˆ ì´ìš© ì„ ì–¸-->
 	<jsp:useBean id="brd" class="guestbook.GuestBean" scope="page" /> 
 	    
 	<% 
 		GuestMgr brddb = new GuestMgr();
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 	 	String menu = request.getParameter("menu"); 
 		
 	 	if (menu.equals("update") ) { 
@@ -23,8 +23,8 @@
 			    
 			if ( !brddb.isPasswd(inum, gb_passwd) ) {
 	%>
-				<!-- ¾ÏÈ£°¡ Æ²¸®¸é ÀÌÀü È­¸éÀ¸·Î ÀÌµ¿ -->
-				<script>alert("ºñ¹Ð¹øÈ£°¡ ´Ù¸¨´Ï´Ù."); history.go(-1);</script>
+				<!-- ì•”í˜¸ê°€ í‹€ë¦¬ë©´ ì´ì „ í™”ë©´ìœ¼ë¡œ ì´ë™ -->
+				<script>alert("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤."); history.go(-1);</script>
 	<%
 			} else {
 	%>
@@ -45,7 +45,16 @@
 	<%				
 			brddb.insertBoard(brd);
 			response.sendRedirect("guestbook_list.jsp");					 		
+	 	} else if (menu.equals("delete")){
+	 %>
+	 <% 
+	 			
+				String gb_num = request.getParameter("gb_num");
+				int inum = Integer.parseInt(gb_num);	
+	 			brddb.deleteBoard(inum);
+	 			response.sendRedirect("guestbook_list.jsp");
 	 	}
+	 %>
 	%>
 </body>
 </html>

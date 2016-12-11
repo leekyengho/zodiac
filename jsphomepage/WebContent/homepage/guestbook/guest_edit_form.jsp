@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="guestbook.*" %>
 <!DOCTYPE HTML>
 <head>
-<meta charset="EUC-KR"/>
+<meta charset="UTF-8"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script
@@ -14,9 +14,9 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- ÆÄÀÏ boardForm.js : ÆûÀÇ °¢ ÀÔ·Â °ªÀÌ ÀÖ´ÂÁö¸¦ °ËÅäÇÏ´Â ÇÔ¼ö ±¸Çö -->
-<script language=JavaScript src="../board/boardForm.js"></script>
-<link href="style.css" rel="stylesheet" type="text/css">
+<!-- íŒŒì¼ boardForm.js : í¼ì˜ ê° ìž…ë ¥ ê°’ì´ ìžˆëŠ”ì§€ë¥¼ ê²€í† í•˜ëŠ” í•¨ìˆ˜ êµ¬í˜„ -->
+<script src="../boardForm.js"></script>
+<link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -45,11 +45,11 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 		};
 	%>
 
-	<h2>¹æ¸í·Ï <%=gb_headline %>  </h2> <hr>
+	<h2>ë°©ëª…ë¡ <%=gb_headline %>  </h2> <hr>
 	
 	<center>
 	<form name=boardForm method=post action="guestbook_control.jsp" >
-	<!-- ¼öÁ¤:  °Ô½Ã id¸¦ hiddenÀ¸·Î Àü¼Û -->
+	<!-- ìˆ˜ì •:  ê²Œì‹œ idë¥¼ hiddenìœ¼ë¡œ ì „ì†¡ -->
 	<input type=hidden name="gb_num" value=<%=gb_num %>>
 	<input type=hidden name="menu" value="insert">
 	<table width=700 border=0 cellspacing=0 cellpadding=7>
@@ -60,21 +60,21 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 				<td colspan=2>
 					<table  width=650>
 					    <tr>
-						     <td  align=left>ÀÌ ¸§:</td>
+						     <td  align=left>ì´ ë¦„:</td>
 						     <td align=left>
-								<input type=text name=name value="<%=gb_name%>" size=30 maxlength=20></td>
+								<input type=text name=gb_name value="<%=gb_name%>" size=30 maxlength=20></td>
 					    </tr>	
 					</table>
 				</td> 
 			</tr>
 		    <tr>
 			    <td colspan=2 align=left>
-						<textarea name=content rows=5 cols=100><%=gb_content%></textarea></td>
+						<textarea name=gb_content rows=5 cols=100><%=gb_content%></textarea></td>
 			</tr>
 			<tr>
-			    <td colspan=2 align=left>ºñ¹Ð¹øÈ£ :
-				     <input type=password name=passwd size=20 maxlength=20><font color=red>  
-			         	°Ô½Ã ³»¿ëÀ» ¼öÁ¤ ¶Ç´Â »èÁ¦ÇÏ·Á¸é ºñ¹Ð¹øÈ£°¡ ÇÊ¿äÇÕ´Ï´Ù.</font></td>
+			    <td colspan=2 align=left>ë¹„ë°€ë²ˆí˜¸ :
+				     <input type=password name=gb_passwd size=20 maxlength=20><font color=red>  
+			         	ê²Œì‹œ ë‚´ìš©ì„ ìˆ˜ì • ë˜ëŠ” ì‚­ì œí•˜ë ¤ë©´ ë¹„ë°€ë²ˆí˜¸ê°€ í•„ìš”í•©ë‹ˆë‹¤.</font></td>
 		    </tr>
 			<tr>
 		     	<td colspan=2 height=5><hr size=2></td>
@@ -82,9 +82,9 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 			<tr>
 			     <td colspan=2>
 					<% if (gb_num == null) { %>	
-					 		<input type=button value="µî·Ï" onClick="insertCheck()">
+					 		<input type=button value="ë“±ë¡" onClick="insertCheck()">
 					<% } else { %>
-			  				<input type=button value="¼öÁ¤¿Ï·á" onClick="updateCheck()">			    	
+			  				<input type=button value="ìˆ˜ì •ì™„ë£Œ" onClick="updateCheck()">			    	
 					<% } %>	
 				 </td>
 		    </tr> 

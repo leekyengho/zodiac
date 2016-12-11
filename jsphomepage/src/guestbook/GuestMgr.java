@@ -143,8 +143,11 @@ public class GuestMgr {
 			rs.next();
 			String orgPasswd = rs.getString(1);
 			
-			if(gb_passwd.equals(orgPasswd))
+			System.out.println("gb_passwd : "+gb_passwd + ", orgPasswd : "+orgPasswd);
+			if(gb_passwd.equals(orgPasswd)){
 				flag = true;
+			}
+				
 			
 		} catch (Exception e) {
 			e.printStackTrace();

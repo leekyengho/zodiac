@@ -12,7 +12,7 @@ integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script language=JavaScript src="boardForm.js"></script>
+<script language=JavaScript src="../boardForm.js"></script>
 <link href="style.css" rel="stylesheet" type="text/css"> 
 </head>
 <body>
@@ -22,8 +22,6 @@ crossorigin="anonymous"></script>
 	<div id="content">
 	
 <%
-		String gb_name = ""; 
-		String gb_content = "";
 		String gb_headline = "insert";
 		
 		String num = request.getParameter("gb_num");
@@ -32,20 +30,17 @@ crossorigin="anonymous"></script>
 			
 			GuestMgr beandb = new GuestMgr(); 
 			GuestBean bean = beandb.getBoard(idnum);  
-			gb_name = bean.getGb_name();
-			gb_content = bean.getGb_content();
-			gb_headline = "update";
 		};
 %>
         <h1>방명록 : <%=gb_headline %></h1>
-        <form name="form1" method="post" action="guestbook_control.jsp">
-            <input type=hidden name="num" value=<%=num %>>
+        <form name="boardForm" method="post" action="guestbook_control.jsp">
+            <input type=hidden name="gb_num" value=<%=num %>>
 			<input type=hidden name="menu" value="insert">
             
             <table cellpadding="5" cellspacing="0" border="1">
                 <tr>
                     <td bgcolor="#99CCFF">작 성 자</td>
-                    <td><input type="text" name="gb_name" size="30" value="<%=gb_name%>" maxlength="20"></td>
+                    <td><input type="text" name="gb_name" size="30"  maxlength="20"></td>
                 </tr>
                            
                 <tr>
@@ -54,7 +49,7 @@ crossorigin="anonymous"></script>
                 </tr>
                 
                 <tr>
-                    <td colspan="2"><textarea rows="5" name="gb_content" cols="40"><%=gb_content %></textarea></td>
+                    <td colspan="2"><textarea rows="5" name="gb_content" cols="40"></textarea></td>
                 </tr>
                 
                 <tr>

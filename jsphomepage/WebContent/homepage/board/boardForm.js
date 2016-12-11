@@ -34,7 +34,7 @@ function updateCheck() {
 		document.boardForm.passwd.focus();
 		return;
 	}
-	alert('update');
+	
 	document.boardForm.menu.value='update';
 	document.boardForm.submit();			
 }
